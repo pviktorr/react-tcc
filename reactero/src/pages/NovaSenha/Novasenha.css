@@ -1,0 +1,176 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#fundo{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: auto;
+}
+.nova-senha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #12ADEC 10%, #39ecbf 100% );
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Imagem de fundo do quebra-cabeça */
+  
+  .nova-senha-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #e1e5e9;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  /* DIV DA LOGO */
+  .logo-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo {
+    max-width: 120px;
+    height: auto;
+  }
+  
+  .nova-senha-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+  
+  .nova-senha-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .input-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+    display: block;
+  }
+  
+  /* CONTAINER DO INPUT COM ÍCONE */
+  .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-container {
+    position: absolute;
+    left: 12px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .input-icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+  }
+  
+  .password-input {
+    padding: 14px 16px 14px 44px; /* Espaço extra na esquerda para o ícone */
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #fafbfc;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .password-input:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    padding-left: 44px; /* Mantém o espaço do ícone */
+  }
+  
+  .password-input::placeholder {
+    color: #a0a0a0;
+  }
+  
+  .reset-button {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+    box-shadow: 0 2px 10px rgba(0, 123, 255, 0.3);
+    width: 100%;
+  }
+  
+  .reset-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+  }
+  
+  .reset-button:active {
+    transform: translateY(0);
+  }
+  
+  /* DIV PARA ÍCONES ADICIONAIS */
+ 
+  
+  /* Responsividade */
+  @media (max-width: 480px) {
+    .nova-senha-card {
+      padding: 30px 24px;
+      margin: 10px;
+    }
+    
+    .nova-senha-title {
+      font-size: 24px;
+    }
+    
+    .logo {
+      max-width: 100px;
+    }
+    
+    .additional-icons {
+      gap: 15px;
+    }
+    
+    .additional-icon {
+      width: 28px;
+      height: 28px;
+    }
+  }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
+import { Link } from 'react-router-dom';
 import './Cadastro.css';
 
 const cadastro = () => {
@@ -136,7 +137,7 @@ const cadastro = () => {
       
         {/* Rodapé */}
         <div className="login-footer">
-          <p>Já possui conta? <a href="/cadastro" className="cadastro-link">Entre</a></p>
+           <p> já possui conta? <Link to={'/Login'}>Login  </Link></p>
         </div>
       </div>
     </div>

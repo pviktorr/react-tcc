@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
+import { Link } from 'react-router-dom'
 import './Login.css';
+
+
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -148,7 +152,7 @@ const Login = () => {
 
         {/* Rodapé */}
         <div className="login-footer">
-          <p>Não possui conta? <a href="/cadastro" className="cadastro-link">Cadastre-se</a></p>
+          <p>Não possui conta? <Link to={'/Cadastro'}>Cadastre-se  </Link></p>
         </div>
       </div>
     </div>

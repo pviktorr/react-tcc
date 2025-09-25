@@ -61,10 +61,7 @@ const cadastro = () => {
     }
   };
 
-  const handleEsqueciSenha = () => {
-    // Redirecionar para página de recuperação de senha
-    window.location.href = '/nova-senha';
-  };
+
 
   return (
     <div className="login-container">
@@ -137,7 +134,7 @@ const cadastro = () => {
       
         {/* Rodapé */}
         <div className="login-footer">
-           <p> já possui conta? <Link to={'/Login'}>Login  </Link></p>
+           <p> Já possui conta? <Link to={'/Login'}>Login  </Link></p>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './NovaSenha.css';
 import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
+import senha from '../../assets/senha.png'
 // Importe suas imagens/ícones aqui (ajuste os caminhos)
 // import logo from './caminho/da/logo.png';
 // import emailIcon from './caminho/email-icon.svg';
@@ -53,7 +54,7 @@ const NovaSenha = () => {
             <div className="input-with-icon">
               <div className="icon-container">
                 <img 
-                  src="../assets/react.svg" 
+                  src={senha} id='senha'
                   alt="Senha" 
                   className="input-icon"
                 />
@@ -78,7 +79,7 @@ const NovaSenha = () => {
             <div className="input-with-icon">
               <div className="icon-container">
                 <img 
-                  src="/caminho/para/confirm-icon.png" 
+                  src={senha} id='senha' 
                   alt="Confirmar" 
                   className="input-icon"
                 />
@@ -100,20 +101,7 @@ const NovaSenha = () => {
           </button>
         </form>
 
-        {/* DIV EXTRA PARA OUTROS ÍCONES (opcional) */}
-        <div className="additional-icons">
-          <img 
-            src="/caminho/para/icon1.png" 
-            alt="Ícone 1" 
-            className="additional-icon"
-          />
-          <img 
-            src="/caminho/para/icon2.png" 
-            alt="Ícone 2" 
-            className="additional-icon"
-          />
-        </div>
-
+        
       </div>
     </div>
   );

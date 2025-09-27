@@ -6,6 +6,7 @@ import './Cadastro.css';
 
 const cadastro = () => {
   const [formData, setFormData] = useState({
+    nome:'',
     email: '',
     senha: ''
   });
@@ -28,7 +29,7 @@ const cadastro = () => {
 
     try {
       // FETCH PARA API DE LOGIN
-      const response = await fetch('', {
+      const response = await fetch('http://10.107.144.31:8080/v1/controle-usuario/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ const cadastro = () => {
 
       if (response.ok) {
         // Login bem-sucedido
-        console.log('Login realizado:', data);
+        console.log('Cadastro:', data);
         localStorage.setItem('token', data.token);
         // Redirecionar para outra página
         window.location.href = '/dashboard';
@@ -55,7 +56,7 @@ const cadastro = () => {
     } catch (err) {
       // Erro de rede
       setError('Erro de conexão. Tente novamente.');
-      console.error('Erro no login:', err);
+      console.error('Erro no Cadastro:', err);
     } finally {
       setLoading(false);
     }
@@ -81,9 +82,9 @@ const cadastro = () => {
         <form onSubmit={handleSubmit} className="login-form">
         <div className="input-group">
             <input
-              type="name"
-              name="Nome"
-              value={formData.email}
+              type="text"
+              name="nome"
+              value={formData.nome}
               onChange={handleChange}
               className="login-input"
               placeholder="Digite seu nome..."

@@ -3,10 +3,7 @@ import './NovaSenha.css';
 import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
 import senha from '../../assets/senha.png'
-// Importe suas imagens/ícones aqui (ajuste os caminhos)
-// import logo from './caminho/da/logo.png';
-// import emailIcon from './caminho/email-icon.svg';
-// import passwordIcon from './caminho/password-icon.svg';
+
 
 const NovaSenha = () => {
   const [formData, setFormData] = useState({

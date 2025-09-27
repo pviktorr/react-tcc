@@ -31,7 +31,7 @@ const Login = () => {
 
     try {
       // FETCH PARA API DE LOGIN
-      const response = await fetch('https://sua-api.com/login', {
+      const response = await fetch('', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -29,7 +29,7 @@ const cadastro = () => {
 
     try {
       // FETCH PARA API DE LOGIN
-      const response = await fetch('http://10.107.144.31:8080/v1/controle-usuario/usuario', {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

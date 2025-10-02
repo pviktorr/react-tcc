@@ -26,16 +26,15 @@ const NovaSenha = () => {
 
   return (
     <div className="nova-senha-container">
-         <img src={Fundo} id='fundo' alt="" />
-      <div className="nova-senha-card">
-        
+      <div className="nova-senha-card"> 
+      
         {/* DIV PARA A LOGO */}
         <div className="logo-container">
           <img 
             src= {logo} id='logo'
             alt="Logo" 
             className="logo"
-            // ou use import: src={logo}
+            
           />
         </div>
 

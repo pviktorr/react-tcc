@@ -1,9 +1,12 @@
 import React from 'react';
 import phoneImage from '../../assets/Component 9.png'; 
 import cardImage from '../../assets/rectangle 45.png';
+import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
 
+
 function Onboarding() {
+  const navigate = useNavigate()
   return (
     <div className="onboarding-container">
       <div className="content-wrapper">
@@ -27,9 +30,9 @@ function Onboarding() {
 
       {/* BOTÃO PRÓXIMO */}
       <div className="button-container">
-        <button className="next-button">
-          PRÓXIMO
-        </button>
+  <button className="next-button" onClick={() =>navigate('/Cadastro')}>
+    PRÓXIMO
+  </button>
       </div>
     </div>
   );

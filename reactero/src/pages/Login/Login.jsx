@@ -75,9 +75,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-       <div>
-        <img src={Fundo} id='fundo' alt="" />
-       </div>
+       
       <div className="login-card">
         <div> 
             <div>

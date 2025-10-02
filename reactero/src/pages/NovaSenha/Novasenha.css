@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 #fundo{
-    position: absolute;
+    position: relative;
     z-index: 1;
     height: 100%;
     width: auto;

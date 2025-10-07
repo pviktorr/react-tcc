@@ -30,7 +30,7 @@ function Onboarding() {
 
       {/* BOTÃO PRÓXIMO */}
       <div className="button-container">
-  <button className="next-button" onClick={() =>navigate('/Cadastro')}>
+  <button className="next-button" onClick={() =>navigate('/Inicio')}>
     PRÓXIMO
   </button>
       </div>

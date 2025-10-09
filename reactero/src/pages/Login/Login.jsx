@@ -31,14 +31,14 @@ const Login = () => {
 
     try {
       // FETCH PARA API DE LOGIN
-      const response = await fetch('', {
-        method: 'GET',
+      const response = await fetch('http://localhost:8080/v1/controle-usuarios/usuario/login', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: formData.email,
-          password: formData.senha
+          senha: formData.senha
         })
       });
 
@@ -48,8 +48,9 @@ const Login = () => {
         // Login bem-sucedido
         console.log('Login realizado:', data);
         localStorage.setItem('token', data.token);
-        // Redirecionar para outra página
-        window.location.href = '/dashboard';
+        alert('Login realizado com sucesso!');
+        // Redirecionar para home
+        window.location.href = '/';
       } else {
         // Erro do servidor
         setError(data.message || 'Erro ao fazer login');
@@ -125,7 +126,6 @@ const Login = () => {
           {error && <div className="error-message">{error}</div>}
 
           <button 
-            type="submit" 
             className="login-button"
             disabled={loading}
           >
@@ -133,28 +133,13 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Divisor */}
-        <div className="divider">
-          <span>ou</span>
-        </div>
-
-        {/* Botão Google */}
-        <button 
-          type="button" 
-          className="google-button"
-          onClick={handleGoogleLogin}
-        >
-          <span className="google-icon">G</span>
-          Login com Google
-        </button>
-
         {/* Rodapé */}
         <div className="login-footer">
-          <p>Não possui conta? <Link to={'/Cadastro'}>Cadastre-se  </Link></p>
+          <p>Não possui conta? <Link to={'/cadastro'}>Cadastre-se  </Link></p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login
+export default Login;

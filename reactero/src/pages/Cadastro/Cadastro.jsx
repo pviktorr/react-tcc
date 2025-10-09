@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom';
 import './Cadastro.css';
 
-const cadastro = () => {
+const Cadastro = () => {
   const [formData, setFormData] = useState({
     nome:'',
     email: '',
@@ -28,33 +28,32 @@ const cadastro = () => {
     setError('');
 
     try {
-      // FETCH PARA API DE LOGIN
-      const response = await fetch('', {
+      // FETCH PARA API DE CADASTRO
+      const response = await fetch('http://localhost:8080/v1/controle-usuario/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: formData.email,
-          nome:formData.nome,
-          password: formData.senha
+          nome: formData.nome,
+          senha: formData.senha
         })
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Login bem-sucedido
-        console.log('Cadastro:', data);
-        localStorage.setItem('token', data.token);
-        // Redirecionar para outra página
-        window.location.href = '/dashboard';
+        // Cadastro bem-sucedido
+        console.log('Cadastro realizado:', data);
+        alert('Cadastro realizado com sucesso!');
+        // Redirecionar para login
+        window.location.href = '/login';
       } else {
         // Erro do servidor
-        setError(data.message || 'Erro ao fazer login');
+        setError(data.message || 'Erro ao fazer cadastro');
       }
     } catch (err) {
-      // Erro de rede
       setError('Erro de conexão. Tente novamente.');
       console.error('Erro no Cadastro:', err);
     } finally {
@@ -142,4 +141,4 @@ const cadastro = () => {
   );
 };
 
-export default  cadastro
+export default Cadastro;

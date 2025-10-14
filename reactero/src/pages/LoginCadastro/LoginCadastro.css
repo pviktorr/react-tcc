@@ -1,0 +1,161 @@
+.onboarding-container {
+    min-height: 100vh;
+   
+  
+    background: linear-gradient(135deg, #12ADEC 10%, #39ecbf 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+   
+  }
+  
+  .content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* CARD DA IMAGEM - ESQUERDA */
+  
+  #card {
+      height: 400px;
+      position: absolute; /* Mudei para absolute */
+      width: 40vw; /* Largura fixa baseada na imagem */
+      z-index:1;
+      background: white;
+      border-radius: 40px;
+      padding: 20px;
+      border-radius: 0 40px 40px 0; /* Só arredonda a direita */
+      margin-left: -20px;
+      /* POSICIONAMENTO NO CANTO ESQUERDO */
+      left: 20px; /* Encostado na esquerda */
+      top: 50%; /* Centralizado verticalmente */
+      transform: translateY(-50%); /* Ajuste vertical */
+  }
+  
+
+  
+  
+  
+  /* SE QUISER A IMAGEM MENOR DENTRO DO CARD */
+  
+  
+  
+  /* TEXTO - DIREITA */
+  .text-section {
+    flex: 1;
+    color: white;
+    text-align: right;
+    padding-right: 40px;
+  }
+  
+  .title {   
+   margin-bottom: 20px;
+   font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0.95;
+    
+  }
+  
+  .subtitle {
+      
+      font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+  }
+  
+  
+  /* BOTÃO INFERIOR DIREITO */
+  .button-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+  }
+  
+  .button {
+    background: linear-gradient(#1892FF, #0E5899);
+    color: white;
+    padding: 22px 65px;
+    font-size: 23px;
+    font-weight: 600; 
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s; /* Faltou o "all" */
+    border: none; /* Remove a borda padrão */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .button:hover {
+    background: linear-gradient(#2BA0FF, #1A6BB8); /* Gradient mais claro */
+    transform: translateY(-3px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  }
+  .login-button{
+    background: linear-gradient(#1892FF, #0E5899);
+    color: white;
+    padding: 22px 65px;
+    font-size: 23px;
+    font-weight: 600; 
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s; /* Faltou o "all" */
+    border: none; /* Remove a borda padrão */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+ 
+  
+  .next-button.simples:hover {
+    background: #2BA0FF;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 968px) {
+    .content-wrapper {
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    .text-section {
+      text-align: center;
+      padding-right: 0;
+    }
+    
+    .title {
+      font-size: 46px;
+    }
+    
+    .subtitle {
+      font-size: 32px;
+    }
+    
+    .phone-container {
+      width: 300px;
+      height: 600px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 36px;
+    }
+    
+    .subtitle {
+      font-size: 26px;
+    }
+    
+    .phone-container {
+      width: 280px;
+      height: 560px;
+      border-radius: 50px;
+    }
+    
+    .next-button {
+      padding: 18px 50px;
+      font-size: 22px;
+    }
+  }

@@ -1,42 +1,78 @@
-import React from 'react';
-import phoneImage from '../../assets/Component 9.png'; 
-import cardImage from '../../assets/rectangle 45.png';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
+import logo from '../../assets/logo.png';
+import cor from '../../assets/cor.png';
+import mao from '../../assets/mao.png';
+import texto from '../../assets/texto.png';
 
+function Home() {
+  const [slideIndex, setSlideIndex] = useState(0);
 
+  const slides = [
+    { image: cor, alt: 'Coração TEA' },
+    { image: mao, alt: 'Inclusão' },
+    { image: texto, alt: 'Ajuda' },
+  ];
 
-function Onboarding() {
-  const navigate = useNavigate()
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [slides.length]);
+
+  const currentSlide = (n) => {
+    setSlideIndex(n);
+  };
+
   return (
- 
-    <div className="onboarding-container">
-        <div className="content-wrapper">
-          
-          {/* CARD DA IMAGEM DO CELULAR - ESQUERDA */}
-          <div className="image-card">
-            <img src={cardImage} id='card' alt="" />
-            <div className="phone-container">
-              <img src={phoneImage} alt="" className="phone-image" />
-            </div>
+    <div className="home__root">
+      {/* Navbar */}
+      <header className="navbar">
+        <ul>
+          <li>
+            <Link to="/">
+              <span>Home</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/perfil">
+              <span>Perfil</span>
+            </Link>
+          </li>
+          <li className="logo">
+            <img src={logo} alt="Logo" />
+          </li>
+        </ul>
+      </header>
+
+      {/* Slideshow */}
+      <main className="slideshow-container">
+        {slides.map((s, idx) => (
+          <div
+            key={idx}
+            className={`slide fade`}
+            aria-hidden={idx !== slideIndex}
+            style={{ display: idx === slideIndex ? 'block' : 'none' }}
+          >
+            <img src={s.image} alt={s.alt} />
           </div>
+        ))}
 
-          {/* TEXTO - DIREITA */}
-          <div className="text-section">
-            <h1 className="title">Tenha tudo sob controle em casa!</h1>
-            <h2 className="subtitle">DA MELHOR FORMA!</h2>
-          </div>
-
+        <div className="dots">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              className={`dot ${idx === slideIndex ? 'active' : ''}`}
+              onClick={() => currentSlide(idx)}
+              aria-label={`Ir para slide ${idx + 1}`}
+            />
+          ))}
         </div>
-
-        {/* BOTÃO PRÓXIMO */}
-        <div className="button-container">
-          <button className="next-button" onClick={() =>navigate('/Inicio')}>
-            PRÓXIMO
-          </button>
-        </div>
+      </main>
     </div>
   );
 }
 
-export default Onboarding;
+export default Home;

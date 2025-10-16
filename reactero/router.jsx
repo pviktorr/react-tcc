@@ -5,6 +5,9 @@ import Cadastro from './src/pages/Cadastro/Cadastro'; // Importe a sua página d
 import Home from './src/pages/Home/Home'
 import Inicio from './src/pages/Inicio/Inicio'
 import Perfil from './src/pages/Perfil/perfil'
+import NovaSenha from './src/pages/NovaSenha/Novasenha'
+import RecSenha from './src/pages/RecSenha/RecSenha'
+import CodigoRec from './src/pages/CodigoRec/CodigoRec'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function AppRoutes() {
@@ -19,6 +22,9 @@ function AppRoutes() {
           {/* Demais rotas */}
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/nova-senha" element={<NovaSenha />} />
+          <Route path="/recuperar-senha" element={<RecSenha />} />
+          <Route path="/codigo-recuperacao" element={<CodigoRec />} />
           
         </Routes>
       </>

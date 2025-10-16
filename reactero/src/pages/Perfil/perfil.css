@@ -8,7 +8,7 @@
 
 /* Fundo */
 .perfil-body {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #12ADEC 10%, #39ecbf 100% );
   min-height: 100vh;
   position: relative;
 }
@@ -134,10 +134,31 @@
   cursor: not-allowed;
 }
 
+/* Link Esqueceu a senha */
+.perfil-esqueci-senha {
+  text-align: right;
+  margin-top: 8px;
+}
+
+.perfil-esqueci-senha-link {
+  background: none;
+  border: none;
+  color: #1e90ff;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  transition: color 0.3s;
+}
+
+.perfil-esqueci-senha-link:hover {
+  color: #1873cc;
+}
+
 /* Botão Alterar */
 .perfil-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 10px;
 }
 

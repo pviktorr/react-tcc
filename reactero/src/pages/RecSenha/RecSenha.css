@@ -1,0 +1,138 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.recsenha-body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #4fc3f7, #80deea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.recsenha-body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/fundo.png') no-repeat center center;
+    background-size: cover;
+    opacity: 1;
+    z-index: 0;
+}
+
+.recsenha-container {
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    z-index: 1;
+}
+
+.recsenha-box {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px 40px 60px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.recsenha-icon {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 15px;
+}
+
+.recsenha-box h2 {
+    margin-bottom: 45px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+
+.recsenha-email-label {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #000;
+    margin-bottom: 30px;
+    font-size: 22px;
+    padding-bottom: 5px;
+    gap: 10px;
+}
+
+.recsenha-email-icon {
+    width: 28px;
+    height: 28px;
+    user-select: none;
+}
+
+.recsenha-email-label input[type="email"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    background: transparent;
+    line-height: 1.2;
+}
+
+.recsenha-email-label input[type="email"]::placeholder {
+    color: #bbb;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+}
+
+.recsenha-info-text {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 40px;
+}
+
+.recsenha-btn-submit {
+    background-color: #2489ff;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recsenha-btn-submit:hover:not(:disabled) {
+    background-color: #1b6ed5;
+    transform: translateY(-2px);
+    box-shadow: 0 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+.recsenha-btn-submit:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.recsenha-btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@keyframes btnPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

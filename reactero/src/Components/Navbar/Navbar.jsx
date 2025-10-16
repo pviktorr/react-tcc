@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import './Navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -8,7 +8,7 @@ const Navbar = () => {
   // Itens da navbar baseados nas suas rotas
   const navItems = [
     { path: '/home', icon: '🏠', label: 'Home' },
-    { path: '/mobile', icon: '📱', label: 'Mobile'},
+    { path: '/mobile', icon: '📱', label: 'Sobre'},
     { path: '/relatorio', icon: '✏️', label: 'Relatório'},
     { path: '/perfil', icon: '🧑', label: 'Perfil' }
   ];

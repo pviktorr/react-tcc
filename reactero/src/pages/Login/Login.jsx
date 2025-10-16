@@ -66,7 +66,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
   const handleGoogleLogin = () => {
     // Integração com Google (exemplo)
     window.location.href = 'https://sua-api.com/auth/google';
@@ -74,17 +73,16 @@ const Login = () => {
 
   const handleEsqueciSenha = () => {
     // Redirecionar para página de recuperação de senha
-    window.location.href = '/nova-senha';
+    window.location.href = '/recuperar-senha';
   };
 
   return (
     <div className="login-container">
-       
       <div className="login-card">
         <div> 
-            <div>
+          <div>
             <img src={logo} alt="" />
-        </div>
+          </div>
         </div>
         <h1 className="login-title">TEAjuda</h1>
         

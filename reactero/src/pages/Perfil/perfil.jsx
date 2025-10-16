@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './perfil.css';
 import senhaIcon from '../../assets/senha.png';
+import Navbar from '../../Components/Navbar/Navbar';
 
 function Perfil() {
   const navigate = useNavigate();
@@ -11,7 +12,34 @@ function Perfil() {
   const [profileImage, setProfileImage] = useState('https://via.placeholder.com/200');
   const [loading, setLoading] = useState(false);
 
-  
+  useEffect(() => {
+    // Carrega os dados do usuário logado
+    const carregarDadosUsuario = async () => {
+      const userId = localStorage.getItem('usuarioId');
+      
+      if (!userId) {
+        alert('Você precisa estar logado para acessar o perfil.');
+        navigate('/Login');
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`);
+        
+        if (response.ok) {
+          const dados = await response.json();
+          setNome(dados.nome || '');
+          setEmail(dados.email || '');
+        } else {
+          console.error('Erro ao carregar dados do usuário');
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    };
+
+    carregarDadosUsuario();
+  }, [navigate]);
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,7 +84,7 @@ function Perfil() {
     setLoading(true);
     
     try {
-      const response = await fetch(`http://localhost:8080/v1/controle-usuario/usuario/${userId}`, {
+      const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -69,11 +97,15 @@ function Perfil() {
       if (response.ok) {
         alert('Dados atualizados com sucesso!');
         
-        if (email) {
-          localStorage.setItem('usuarioEmail', email);
+        // Recarrega os dados atualizados
+        const responseGet = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`);
+        if (responseGet.ok) {
+          const dados = await responseGet.json();
+          setNome(dados.nome || '');
+          setEmail(dados.email || '');
         }
         
-        setEmail('');
+        // Limpa apenas o campo de senha
         setSenha('');
       } else {
         alert(`Erro ao atualizar: ${resultado.message || 'Verifique os dados e tente novamente.'}`);
@@ -87,7 +119,9 @@ function Perfil() {
   };
 
   return (
-    <div className="perfil-body">
+    <>
+      <Navbar />
+      <div className="perfil-body">
       <main className="perfil-main-content">
         <div className="perfil-container">
           <aside className="perfil-side">
@@ -146,6 +180,15 @@ function Perfil() {
                     onChange={(e) => setSenha(e.target.value)}
                   />
                 </div>
+                <div className="perfil-esqueci-senha">
+                  <button 
+                    type="button" 
+                    className="perfil-esqueci-senha-link"
+                    onClick={() => navigate('/nova-senha')}
+                  >
+                    Redefinir senha
+                  </button>
+                </div>
               </div>
 
               <div className="perfil-actions">
@@ -161,7 +204,8 @@ function Perfil() {
           </section>
         </div>
       </main>
-    </div>
+      </div>
+    </>
   );
 }
 

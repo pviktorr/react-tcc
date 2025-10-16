@@ -67,8 +67,8 @@
 }
 
 .nav-icon {
-  font-size: 1.1rem;
-  color: #000000;
+  font-size: 1rem;
+  color: #ffffff;
   filter: brightness(0);
   transition: transform 0.2s ease;
   font-weight: 300;
@@ -85,7 +85,7 @@
 .nav-label {
   font-size: 0.65rem;
   font-weight: 600;
-  color: #000000;
+  color: #fdfdfd;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   white-space: nowrap;

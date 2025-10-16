@@ -124,19 +124,9 @@ function Perfil() {
       <div className="perfil-body">
       <main className="perfil-main-content">
         <div className="perfil-container">
-          <aside className="perfil-side">
-            <div className="perfil-photo" onClick={() => document.getElementById('fileInput').click()}>
-              <img src={profileImage} alt="Foto de Perfil" />
-            </div>
-            <input 
-              type="file" 
-              id="fileInput" 
-              accept="image/*" 
-              style={{ display: 'none' }} 
-              onChange={handleImageChange}
-            />
-            <h1>Perfil</h1>
-          </aside>
+          <div className="background">
+            
+          </div>
 
           <section className="perfil-form">
             <form onSubmit={handleSubmit}>

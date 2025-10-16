@@ -1,13 +1,13 @@
 import React from "react";
 
-import LoginPage from './src/pages/Login/Login'; // Importe a sua página de login
-import Cadastro from './src/pages/Cadastro/Cadastro'; // Importe a sua página de cadastro
-import Home from './src/pages/Home/Home'
-import Inicio from './src/pages/Inicio/Inicio'
-import Perfil from './src/pages/Perfil/perfil'
-import NovaSenha from './src/pages/NovaSenha/Novasenha'
-import RecSenha from './src/pages/RecSenha/RecSenha'
-import CodigoRec from './src/pages/CodigoRec/CodigoRec'
+import LoginPage from './pages/Login/Login'; // Importe a sua página de login
+import Cadastro from './pages/Cadastro/Cadastro'; // Importe a sua página de cadastro
+import Home from './pages/Home/Home'
+import Inicio from './pages/Inicio/Inicio'
+import Perfil from './pages/Perfil/perfil'
+import NovaSenha from './pages/NovaSenha/Novasenha'
+import RecSenha from './pages/RecSenha/RecSenha'
+import CodigoRec from './pages/CodigoRec/CodigoRec'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function AppRoutes() {

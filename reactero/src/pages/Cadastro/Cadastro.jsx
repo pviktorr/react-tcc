@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom';
 import './Cadastro.css';
 
-const Cadastro = () => {
+const cadastro = () => {
   const [formData, setFormData] = useState({
     nome:'',
     email: '',
@@ -28,32 +28,33 @@ const Cadastro = () => {
     setError('');
 
     try {
-      // FETCH PARA API DE CADASTRO
-      const response = await fetch('http://localhost:8080/v1/teajuda/usuario', {
+      // FETCH PARA API DE cadastro
+      const response = await fetch('http://10.107.144.21:8080/v1/controle-usuario/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           email: formData.email,
-          nome: formData.nome,
-          senha: formData.senha
+          nome:formData.nome,
+          password: formData.senha
         })
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Cadastro bem-sucedido
-        console.log('Cadastro realizado:', data);
-        alert('Cadastro realizado com sucesso!');
-        // Redirecionar para login
-        window.location.href = '/login';
+        // Login bem-sucedido
+        console.log('Cadastro:', data);
+        localStorage.setItem('token', data.token);
+        // Redirecionar para outra página
+        window.location.href = '/dashboard';
       } else {
         // Erro do servidor
-        setError(data.message || 'Erro ao fazer cadastro');
+        setError(data.message || 'Erro ao fazer login');
       }
     } catch (err) {
+      // Erro de rede
       setError('Erro de conexão. Tente novamente.');
       console.error('Erro no Cadastro:', err);
     } finally {
@@ -65,7 +66,9 @@ const Cadastro = () => {
 
   return (
     <div className="login-container">
-     
+       <div>
+        <img src={Fundo} id='fundo' alt="" />
+       </div>
       <div className="login-card">
         <div> 
             <div>
@@ -123,7 +126,7 @@ const Cadastro = () => {
             className="login-button"
             disabled={loading}
           >
-            {loading ? 'CARREGANDO...' : 'CADASTRAR'}
+            {loading ? 'CARREGANDO...' : 'ENTRAR'}
           </button>
         </form>
 
@@ -139,4 +142,4 @@ const Cadastro = () => {
   );
 };
 
-export default Cadastro;
+export default  cadastro

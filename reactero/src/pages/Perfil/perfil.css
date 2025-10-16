@@ -8,9 +8,10 @@
 
 /* Fundo */
 .perfil-body {
-  background: linear-gradient(135deg, #12ADEC 10%, #39ecbf 100% );
+  
   min-height: 100vh;
-  position: relative;
+  max-width: 100vw;
+  
 }
 
 /* CONTEÚDO PRINCIPAL */

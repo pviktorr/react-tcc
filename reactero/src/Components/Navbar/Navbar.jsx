@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './Navbar.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,14 +10,13 @@ const Navbar = () => {
     { path: '/home', icon: '🏠', label: 'Home' },
     { path: '/mobile', icon: '📱', label: 'Mobile'},
     { path: '/relatorio', icon: '✏️', label: 'Relatório'},
-    { path: '/inicio', icon: '🧑', label: 'Perfil' }
-    
+    { path: '/perfil', icon: '🧑', label: 'Perfil' }
   ];
 
   const isActive = (path) => {
     return location.pathname === path;
   };
-
+  
   return (
     <nav className="navbar">
       <div className="navbar-container">

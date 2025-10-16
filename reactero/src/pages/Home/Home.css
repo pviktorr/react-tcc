@@ -18,35 +18,27 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
   
 }
-
-/* CARD DA IMAGEM - ESQUERDA */
 
 #card {
     height: 650px;
     position: absolute;
-    width: 45vw; /* Largura fixa baseada na imagem */
+    width: 45vw;
     z-index:1;
     background: white;
-    border-radius: 40px;
+    border-radius: 0 40px 40px 0; 
     padding: 20px;
-    border-radius: 0 40px 40px 0; /* Só arredonda a direita */
     margin-left: -20px;
-    /* POSICIONAMENTO NO CANTO ESQUERDO */
-    left: 20px; /* Encostado na esquerda */
-    top: 50%; /* Centralizado verticalmente */
-    transform: translateY(-50%); /* Ajuste vertical */
-    margin-top: 100px;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/* IMAGEM DENTRO DO CARD */
 .phone-image {
     position: relative;
-    z-index: 2; /* Garante que fique acima do card */
-    width: 100%; /* Ocupa toda a largura do card */
-    height: 90%; /* Ocupa toda a altura do card */
+    width: 100%; 
+    height: 90%; 
     object-fit: cover;
 margin-bottom: 100px;
 margin-left: 100px;

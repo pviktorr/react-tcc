@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
+import olhoAberto from '../../assets/aberto.png'
+import olhoFechado from '../../assets/fechado.png'
 import { Link } from 'react-router-dom'
 import './Login.css';
 
@@ -14,6 +16,7 @@ const Login = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [mostrarSenha, setMostrarSenha] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +34,7 @@ const Login = () => {
 
     try {
       // FETCH PARA API DE LOGIN
-      const response = await fetch('http://localhost:8080/v1/controle-usuarios/usuario/login', {
+      const response = await fetch('http://localhost:8080/v1/teajuda/usuario/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,15 +102,21 @@ const Login = () => {
             />
           </div>
           
-          <div className="input-group">
+          <div className="input-group password-group">
             <input
-              type="password"
+              type={mostrarSenha ? "text" : "password"}
               name="senha"
               value={formData.senha}
               onChange={handleChange}
               className="login-input"
               placeholder="Digite sua senha..."
               required
+            />
+            <img
+              src={mostrarSenha ? olhoAberto : olhoFechado}
+              alt="Mostrar/Ocultar senha"
+              className="password-toggle"
+              onClick={() => setMostrarSenha(!mostrarSenha)}
             />
           </div>
 

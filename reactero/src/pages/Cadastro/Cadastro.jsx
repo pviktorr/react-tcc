@@ -29,7 +29,7 @@ const Cadastro = () => {
 
     try {
       // FETCH PARA API DE CADASTRO
-      const response = await fetch('http://localhost:8080/v1/controle-usuario/usuario', {
+      const response = await fetch('http://localhost:8080/v1/teajuda/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const Cadastro = () => {
             className="login-button"
             disabled={loading}
           >
-            {loading ? 'CARREGANDO...' : 'ENTRAR'}
+            {loading ? 'CARREGANDO...' : 'CADASTRAR'}
           </button>
         </form>
 

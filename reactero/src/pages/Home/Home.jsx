@@ -5,9 +5,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Home.css';
 
 
+
 function Onboarding() {
   const navigate = useNavigate()
   return (
+ 
     <div className="onboarding-container">
       <div className="content-wrapper">
         

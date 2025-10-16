@@ -8,9 +8,11 @@ const Navbar = () => {
 
   // Itens da navbar baseados nas suas rotas
   const navItems = [
-    { path: '/', icon: '🏠', label: 'Home' },
-    { path: '/inicio', icon: '✏️', label: 'Perfil' }
-
+    { path: '/home', icon: '🏠', label: 'Home' },
+    { path: '/mobile', icon: '📱', label: 'Mobile'},
+    { path: '/relatorio', icon: '✏️', label: 'Relatório'},
+    { path: '/inicio', icon: '🧑', label: 'Perfil' }
+    
   ];
 
   const isActive = (path) => {

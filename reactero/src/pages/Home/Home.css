@@ -1,7 +1,11 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .onboarding-container {
   min-height: 100vh;
- 
-
   background: linear-gradient(135deg, #12ADEC 10%, #39ecbf 100%);
   display: flex;
   align-items: center;
@@ -14,13 +18,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+ 
+  
 }
 
 /* CARD DA IMAGEM - ESQUERDA */
 
 #card {
     height: 650px;
-    position: absolute; /* Mudei para absolute */
+    position: absolute;
     width: 45vw; /* Largura fixa baseada na imagem */
     z-index:1;
     background: white;
@@ -32,6 +38,7 @@
     left: 20px; /* Encostado na esquerda */
     top: 50%; /* Centralizado verticalmente */
     transform: translateY(-50%); /* Ajuste vertical */
+    margin-top: 100px;
 }
 
 /* IMAGEM DENTRO DO CARD */

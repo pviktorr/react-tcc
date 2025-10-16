@@ -10,9 +10,8 @@ import { Routes } from 'react-router-dom'
 
 function App() {
   return (
-    
-    <div className="App">
-      <Navbar/>
+      <div className="app-content">
+      <AppRoutes/>
     </div>
   )
 }

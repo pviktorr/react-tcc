@@ -9,6 +9,8 @@ import Cadastro from './pages/Cadastro/Cadastro'
 import Home from './pages/Home/Home'
 import AppRoutes from '../src/router'
 
+import AppRoutes from './router.jsx'
+
 import { Routes } from 'react-router-dom'
 function App() {
   return (

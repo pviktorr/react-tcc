@@ -33,19 +33,46 @@ const Login = () => {
     setError('');
 
     try {
+      const email = (formData.email || '').trim();
+      const senha = (formData.senha || '').trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !senha) {
+        setLoading(false);
+        setError('Preencha email e senha.');
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        setLoading(false);
+        setError('Informe um e-mail válido.');
+        return;
+      }
+      if (senha.length < 6) {
+        setLoading(false);
+        setError('A senha deve ter ao menos 6 caracteres.');
+        return;
+      }
       // FETCH PARA API DE LOGIN
       const response = await fetch('http://localhost:8080/v1/teajuda/usuario/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify({
-          email: formData.email,
-          senha: formData.senha
+          email,
+          senha,
+          password: senha,
+          login: email
         })
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let data;
+      try {
+        data = contentType.includes('application/json') ? await response.json() : await response.text();
+      } catch (_) {
+        data = null;
+      }
 
       if (response.ok) {
         // Login bem-sucedido
@@ -53,10 +80,14 @@ const Login = () => {
         localStorage.setItem('token', data.token);
         alert('Login realizado com sucesso!');
         // Redirecionar para home
+
         window.location.href = '/Perfil';
+
+        window.location.href = '/home';
       } else {
         // Erro do servidor
-        setError(data.message || 'Erro ao fazer login');
+        const serverMsg = (data && data.message) ? data.message : (typeof data === 'string' ? data : 'Erro ao fazer login');
+        setError(serverMsg);
       }
     } catch (err) {
       // Erro de rede
@@ -66,11 +97,7 @@ const Login = () => {
       setLoading(false);
     }
   };
-  const handleGoogleLogin = () => {
-    // Integração com Google (exemplo)
-    window.location.href = 'https://sua-api.com/auth/google';
-  };
-
+  
   const handleEsqueciSenha = () => {
     // Redirecionar para página de recuperação de senha
     window.location.href = '/recuperar-senha';

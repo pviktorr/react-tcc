@@ -12,15 +12,30 @@ function RecSenha() {
     e.preventDefault();
     setLoading(true);
 
-    // Salva o email no localStorage
+   
     localStorage.setItem('userEmail', email);
 
-    // Simula envio de email (aqui você pode adicionar a chamada à API)
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('http://localhost:8080/v1/teajuda/solicitacao-de-senha', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
       setLoading(false);
-      // Redireciona para página de código de recuperação
+   
       navigate('/codigo-recuperacao');
-    }, 1000);
+    } catch (err) {
+      setLoading(false);
+      alert('Não foi possível enviar o e-mail de recuperação. Tente novamente.');
+    }
   };
 
   return (

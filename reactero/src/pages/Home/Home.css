@@ -145,3 +145,65 @@
 .home__dot--active {
   all: unset;
 }
+
+/* Navbar SVG animated styles */
+.outline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rect {
+  transition: 0.3s;
+  stroke: transparent; /* escondido por padrão */
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.nav {
+  position: relative;
+  width: 400px;
+  height: 60px;
+  margin: 20px auto;
+}
+
+.container:hover .outline .rect {
+  transition: 0.3s;
+  stroke: #000; /* mostra contorno sólido no hover */
+}
+
+/* Reset quickly when mouse leaves the container to evitar 'rebarba' */
+.container:not(:hover) .outline .rect {
+  transition: 0.2s;
+  stroke: transparent; /* some totalmente ao sair */
+}
+
+.container {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 12px; /* cantos combinando com o SVG */
+  overflow: hidden; /* evita vazamentos do stroke nas bordas */
+}
+
+.btn {
+  padding: 0.5em 1.5em;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.btn:hover {
+  background: #fff3;
+}
+
+/* Comportamento uniforme para qualquer botão */
+.btn:hover ~ .outline .rect {
+  stroke: #000;
+}

@@ -46,6 +46,8 @@ function CodigoRec() {
     // Simula verificação (aqui você pode adicionar chamada à API)
     console.log('Código digitado:', fullCode);
     alert('Código verificado com sucesso!');
+    // Persistir código para uso na redefinição de senha
+    localStorage.setItem('resetCode', fullCode);
     // Redireciona para a página de nova senha
     navigate('/nova-senha');
   };

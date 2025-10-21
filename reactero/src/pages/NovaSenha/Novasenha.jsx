@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import './NovaSenha.css';
+import { useNavigate } from 'react-router-dom';
+import './Novasenha.css';
 import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
 import senha from '../../assets/senha.png'
@@ -10,6 +11,7 @@ const NovaSenha = () => {
     novaSenha: '',
     confirmarSenha: ''
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,9 +21,64 @@ const NovaSenha = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados do formulário:', formData);
+    const novaSenha = (formData.novaSenha || '').trim();
+    const confirmarSenha = (formData.confirmarSenha || '').trim();
+    if (!novaSenha || !confirmarSenha) {
+      alert('Preencha os dois campos de senha.');
+      return;
+    }
+    if (novaSenha !== confirmarSenha) {
+      alert('As senhas não coincidem.');
+      return;
+    }
+
+    const email = localStorage.getItem('userEmail');
+    const codigo = localStorage.getItem('resetCode');
+    if (!email || !codigo) {
+      alert('Informações insuficientes para redefinir a senha. Solicite o código novamente.');
+      return;
+    }
+
+    try {
+      const payload = {
+        email: String(email).trim(),
+        codigo: String(codigo).trim(),
+        senha: novaSenha,
+        token: String(codigo).trim(),
+        novaSenha: novaSenha,
+        confirmarSenha: confirmarSenha,
+      };
+      console.log('Enviando redefinição de senha com payload:', payload);
+      const response = await fetch('http://localhost:8080/v1/teajuda/redefinicao-de-senha', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const contentType = response.headers.get('content-type') || '';
+      let data;
+      try {
+        data = contentType.includes('application/json') ? await response.json() : await response.text();
+      } catch (_) {
+        data = null;
+      }
+      console.log('Resposta redefinição de senha:', response.status, data);
+
+      if (response.ok) {
+        alert('Senha redefinida com sucesso!');
+        navigate('/login');
+      } else {
+        const msg = (data && data.message) ? data.message : (typeof data === 'string' ? data : 'Erro ao redefinir senha.');
+        alert(msg);
+      }
+    } catch (err) {
+      alert('Falha na conexão com o servidor. Verifique sua rede/CORS.');
+      console.error('Erro na redefinição de senha:', err);
+    }
   };
 
   return (

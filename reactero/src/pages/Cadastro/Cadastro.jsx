@@ -29,7 +29,7 @@ const cadastro = () => {
 
     try {
       // FETCH PARA API DE cadastro
-      const response = await fetch('http://10.107.144.21:8080/v1/controle-usuario/usuario', {
+      const response = await fetch('http://localhost:8080/v1/teajuda/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,26 +37,39 @@ const cadastro = () => {
         body: JSON.stringify({
           email: formData.email,
           nome:formData.nome,
-          password: formData.senha
+          senha: formData.senha
         })
       });
-
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let data;
+      try {
+        if (contentType.includes('application/json')) {
+          data = await response.json();
+        } else {
+          data = await response.text();
+        }
+      } catch (parseErr) {
+        data = null;
+      }
 
       if (response.ok) {
-        // Login bem-sucedido
-        console.log('Cadastro:', data);
-        localStorage.setItem('token', data.token);
-        // Redirecionar para outra página
-        window.location.href = '/dashboard';
+        
+        console.log('Cadastro OK:', data);
+        if (data && typeof data === 'object' && data.token) {
+          localStorage.setItem('token', data.token);
+        }
+        
+        window.location.href = '/login';
       } else {
-        // Erro do servidor
-        setError(data.message || 'Erro ao fazer login');
+      
+        console.error('Cadastro erro:', response.status, data);
+        const serverMsg = (data && data.message) ? data.message : (typeof data === 'string' ? data : '');
+        setError(serverMsg || `Erro ao cadastrar (status ${response.status}).`);
       }
     } catch (err) {
       // Erro de rede
-      setError('Erro de conexão. Tente novamente.');
-      console.error('Erro no Cadastro:', err);
+      console.error('Erro no Cadastro (rede/CORS?):', err);
+      setError('Falha na conexão com o servidor. Verifique sua rede ou permissões de CORS.');
     } finally {
       setLoading(false);
     }
@@ -66,9 +79,7 @@ const cadastro = () => {
 
   return (
     <div className="login-container">
-       <div>
-        <img src={Fundo} id='fundo' alt="" />
-       </div>
+      
       <div className="login-card">
         <div> 
             <div>
@@ -126,7 +137,7 @@ const cadastro = () => {
             className="login-button"
             disabled={loading}
           >
-            {loading ? 'CARREGANDO...' : 'ENTRAR'}
+            {loading ? 'CARREGANDO...' : 'CADASTRAR'}
           </button>
         </form>
 

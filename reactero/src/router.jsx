@@ -15,8 +15,9 @@ function AppRoutes() {
       <>
         <Routes>
           {/* Rota padrão */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Inicio />} />
           <Route path="/inicio" element={<Inicio />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/perfil" element={<Perfil />} />
           
           {/* Demais rotas */}

@@ -33,6 +33,10 @@ const NovaSenha = () => {
       alert('As senhas não coincidem.');
       return;
     }
+    if (novaSenha.length < 6) {
+      alert('A nova senha deve ter ao menos 6 caracteres.');
+      return;
+    }
 
     const email = localStorage.getItem('userEmail');
     const codigo = localStorage.getItem('resetCode');

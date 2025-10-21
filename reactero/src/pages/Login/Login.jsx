@@ -53,7 +53,7 @@ const Login = () => {
         localStorage.setItem('token', data.token);
         alert('Login realizado com sucesso!');
         // Redirecionar para home
-        window.location.href = '/';
+        window.location.href = '/Perfil';
       } else {
         // Erro do servidor
         setError(data.message || 'Erro ao fazer login');

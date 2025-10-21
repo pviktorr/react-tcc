@@ -17,11 +17,11 @@ function Perfil() {
     const carregarDadosUsuario = async () => {
       const userId = localStorage.getItem('usuarioId');
       
-      if (!userId) {
-        alert('Você precisa estar logado para acessar o perfil.');
-        navigate('/Login');
-        return;
-      }
+      // if (!userId) {
+      //   alert('Você precisa estar logado para acessar o perfil.');
+      //   navigate('/Login');
+      //   return;
+      // }
 
       try {
         const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`);

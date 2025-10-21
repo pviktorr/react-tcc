@@ -29,7 +29,7 @@ const cadastro = () => {
 
     try {
       // FETCH PARA API DE cadastro
-      const response = await fetch('http://10.107.144.21:8080/v1/controle-usuario/usuario', {
+      const response = await fetch('http://localhost:8080/v1/teajuda/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,9 +37,10 @@ const cadastro = () => {
         body: JSON.stringify({
           email: formData.email,
           nome:formData.nome,
-          password: formData.senha
+          senha: formData.senha
         })
       });
+      
 
       const data = await response.json();
 
@@ -48,7 +49,7 @@ const cadastro = () => {
         console.log('Cadastro:', data);
         localStorage.setItem('token', data.token);
         // Redirecionar para outra página
-        window.location.href = '/dashboard';
+        window.location.href = '/Login';
       } else {
         // Erro do servidor
         setError(data.message || 'Erro ao fazer login');

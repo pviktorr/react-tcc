@@ -49,38 +49,15 @@ const cadastro = () => {
         console.log('Cadastro:', data);
         localStorage.setItem('token', data.token);
         // Redirecionar para outra página
-        window.location.href = '/Login';
-
-      const contentType = response.headers.get('content-type') || '';
-      let data;
-      try {
-        if (contentType.includes('application/json')) {
-          data = await response.json();
-        } else {
-          data = await response.text();
-        }
-      } catch (parseErr) {
-        data = null;
-      }
-
-      if (response.ok) {
-        
-        console.log('Cadastro OK:', data);
-        if (data && typeof data === 'object' && data.token) {
-          localStorage.setItem('token', data.token);
-        }
-        
-        window.location.href = '/login';
+        window.location.href = '/Perfil';
       } else {
-      
-        console.error('Cadastro erro:', response.status, data);
-        const serverMsg = (data && data.message) ? data.message : (typeof data === 'string' ? data : '');
-        setError(serverMsg || `Erro ao cadastrar (status ${response.status}).`);
+        // Erro do servidor
+        setError(data.message || 'Erro ao fazer login');
       }
     } catch (err) {
       // Erro de rede
-      console.error('Erro no Cadastro (rede/CORS?):', err);
-      setError('Falha na conexão com o servidor. Verifique sua rede ou permissões de CORS.');
+      setError('Erro de conexão. Tente novamente.');
+      console.error('Erro no Cadastro:', err);
     } finally {
       setLoading(false);
     }
@@ -90,7 +67,9 @@ const cadastro = () => {
 
   return (
     <div className="login-container">
-      
+       <div>
+        <img src={Fundo} id='fundo' alt="" />
+       </div>
       <div className="login-card">
         <div> 
             <div>
@@ -148,7 +127,7 @@ const cadastro = () => {
             className="login-button"
             disabled={loading}
           >
-            {loading ? 'CARREGANDO...' : 'CADASTRAR'}
+            {loading ? 'CARREGANDO...' : 'ENTRAR'}
           </button>
         </form>
 

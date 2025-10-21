@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #66b3ff 0%, #99ffcc 100%);
+ background: linear-gradient(135deg, #12ADEC 10%, #39ecbf 100% );
 }
 
 .codigorec-container {

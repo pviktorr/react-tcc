@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './perfil.css';
 import senhaIcon from '../../assets/senha.png';
-import Navbar from '../../Components/Navbar/Navbar';
+import '../Home/Home.css';
 
 function Perfil() {
   const navigate = useNavigate();
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
+  const [nome, setNome] = useState(localStorage.getItem('usuarioNome') || '');
+  const [email, setEmail] = useState(localStorage.getItem('usuarioEmail') || '');
   const [senha, setSenha] = useState('');
   const [profileImage, setProfileImage] = useState('https://via.placeholder.com/200');
   const [loading, setLoading] = useState(false);
@@ -16,20 +16,33 @@ function Perfil() {
     // Carrega os dados do usuário logado
     const carregarDadosUsuario = async () => {
       const userId = localStorage.getItem('usuarioId');
-      
-      // if (!userId) {
-      //   alert('Você precisa estar logado para acessar o perfil.');
-      //   navigate('/Login');
-      //   return;
-      // }
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Você precisa estar logado para acessar o perfil.');
+        navigate('/Login');
+        return;
+      }
+
+      if (!userId) {
+        // Sem userId: mantém dados locais e não bloqueia a página
+        return;
+      }
 
       try {
-        const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`);
+        const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
         
         if (response.ok) {
           const dados = await response.json();
           setNome(dados.nome || '');
           setEmail(dados.email || '');
+          // Sincroniza localStorage para outras telas
+          if (dados.nome) localStorage.setItem('usuarioNome', dados.nome);
+          if (dados.email) localStorage.setItem('usuarioEmail', dados.email);
         } else {
           console.error('Erro ao carregar dados do usuário');
         }
@@ -84,10 +97,12 @@ function Perfil() {
     setLoading(true);
     
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...(token ? { 'Authorization': `Bearer ${token}` } : {})
         },
         body: JSON.stringify(dadosAtualizacao)
       });
@@ -98,11 +113,18 @@ function Perfil() {
         alert('Dados atualizados com sucesso!');
         
         // Recarrega os dados atualizados
-        const responseGet = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`);
+        const responseGet = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+          }
+        });
         if (responseGet.ok) {
           const dados = await responseGet.json();
           setNome(dados.nome || '');
           setEmail(dados.email || '');
+          if (dados.nome) localStorage.setItem('usuarioNome', dados.nome);
+          if (dados.email) localStorage.setItem('usuarioEmail', dados.email);
         }
         
         // Limpa apenas o campo de senha
@@ -120,13 +142,48 @@ function Perfil() {
 
   return (
     <>
-      <Navbar />
+      {/* Navbar igual à da Home */}
+      <div className="nav">
+        <div className="container">
+          <Link to="/home" className="btn">Home</Link>
+          <Link to="/perfil" className="btn">Perfil</Link>
+          <Link to="/sobre" className="btn">Sobre</Link>
+          <svg
+            className="outline"
+            overflow="visible"
+            width="400"
+            height="60"
+            viewBox="0 0 400 60"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              className="rect"
+              pathLength="100"
+              x="0"
+              y="0"
+              width="400"
+              height="60"
+              fill="transparent"
+              strokeWidth="5"
+            ></rect>
+          </svg>
+        </div>
+      </div>
+
       <div className="perfil-body">
       <main className="perfil-main-content">
         <div className="perfil-container">
           <div className="background">
             
           </div>
+          <section className="perfil-user">
+            {nome ? (
+              <h2 className="perfil-user__name">{nome}</h2>
+            ) : null}
+            {email ? (
+              <p className="perfil-user__email">{email}</p>
+            ) : null}
+          </section>
 
           <section className="perfil-form">
             <form onSubmit={handleSubmit}>
@@ -139,7 +196,7 @@ function Perfil() {
                     type="text" 
                     placeholder="Nome Completo" 
                     value={nome}
-                    disabled
+                    
                   />
                 </div>
               </div>
@@ -168,6 +225,7 @@ function Perfil() {
                     placeholder="**********" 
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
+                    disabled
                   />
                 </div>
                 <div className="perfil-esqueci-senha">

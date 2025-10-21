@@ -45,11 +45,21 @@ const cadastro = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Login bem-sucedido
+        // Cadastro OK: salvar sessão e dados do usuário
         console.log('Cadastro:', data);
-        localStorage.setItem('token', data.token);
-        // Redirecionar para outra página
-        window.location.href = '/Perfil';
+        const tokenCandidate = data?.token || data?.jwt || data?.access_token || data?.accessToken || data?.data?.token;
+        if (tokenCandidate) {
+          localStorage.setItem('token', String(tokenCandidate));
+        }
+        try {
+          const userId = data?.usuarioId || data?.id || data?.usuario?.id || data?.usuario?.usuarioId;
+          if (userId) localStorage.setItem('usuarioId', String(userId));
+        } catch (_) {}
+        // Garante que nome/email já apareçam na Perfil imediatamente
+        if (formData?.nome) localStorage.setItem('usuarioNome', String(formData.nome));
+        if (formData?.email) localStorage.setItem('usuarioEmail', String(formData.email));
+        // Redirecionar para rota correta (minúsculo)
+        window.location.href = '/perfil';
       } else {
         // Erro do servidor
         setError(data.message || 'Erro ao fazer login');
@@ -67,9 +77,7 @@ const cadastro = () => {
 
   return (
     <div className="login-container">
-       <div>
-        <img src={Fundo} id='fundo' alt="" />
-       </div>
+      
       <div className="login-card">
         <div> 
             <div>

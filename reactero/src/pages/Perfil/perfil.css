@@ -31,6 +31,26 @@
   align-items: center;
 }
 
+/* Cabeçalho com dados do usuário */
+.perfil-user {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 260px;
+}
+
+.perfil-user__name {
+  font-size: 24px;
+  font-weight: 800;
+  color: #222;
+}
+
+.perfil-user__email {
+  font-size: 14px;
+  color: #555;
+}
+
 /* LADO ESQUERDO - Foto de Perfil */
 .perfil-side {
   display: flex;

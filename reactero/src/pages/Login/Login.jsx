@@ -3,13 +3,14 @@ import Fundo from '../../assets/fundo.png'
 import logo from '../../assets/logo.png'
 import olhoAberto from '../../assets/aberto.png'
 import olhoFechado from '../../assets/fechado.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css';
 
 
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     senha: ''
@@ -50,10 +51,23 @@ const Login = () => {
       if (response.ok) {
         // Login bem-sucedido
         console.log('Login realizado:', data);
-        localStorage.setItem('token', data.token);
+        // Extrai token de forma robusta e só persiste se existir
+        const tokenCandidate = data?.token || data?.jwt || data?.access_token || data?.accessToken || data?.data?.token;
+        if (tokenCandidate) {
+          localStorage.setItem('token', String(tokenCandidate));
+        }
+        // Persistir infos do usuário para a tela de Perfil
+        try {
+          const userId = data?.usuarioId || data?.id || data?.usuario?.id || data?.usuario?.usuarioId;
+          const userName = data?.usuario?.nome || data?.nome;
+          const userEmail = data?.usuario?.email || data?.email || formData.email;
+          if (userId) localStorage.setItem('usuarioId', String(userId));
+          if (userName) localStorage.setItem('usuarioNome', String(userName));
+          if (userEmail) localStorage.setItem('usuarioEmail', String(userEmail));
+        } catch (_) {}
         alert('Login realizado com sucesso!');
-        // Redirecionar para home
-        window.location.href = '/Perfil';
+        // Redirecionar para home (SPA)
+        navigate('/home');
       } else {
         // Erro do servidor
         setError(data.message || 'Erro ao fazer login');

@@ -31,10 +31,10 @@ function Home() {
       {/* Navbar animada com SVG */}
       <div className="nav">
         <div className="container">
-          <div className="btn">Home</div>
-          <div className="btn">Contact</div>
-          <div className="btn">About</div>
-          <div className="btn">FAQ</div>
+          <Link to="/home" className="btn">Home</Link>
+          <Link to="/perfil" className="btn">Perfil</Link>
+          <Link to="/sobre" className="btn">Sobre</Link>
+          
           <svg
             className="outline"
             overflow="visible"
@@ -81,6 +81,23 @@ function Home() {
           ))}
         </div>
       </main>
+      {/* Footer simples */}
+      <footer className="home-footer">
+        <div className="home-footer__content">
+          <div className="home-footer__contact">
+            <span><strong>Telefone:</strong> (11) 99999-9999</span>
+            <span><strong>Email:</strong> equipe@teajuda.com</span>
+          </div>
+          <div className="home-footer__social">
+            <a href="https://www.linkedin.com/in/rzmartins/" aria-label="Bryan">Bryan</a>
+            <a href="https://www.linkedin.com/in/pedro-rodrigues-41169031b/?originalSubdomain=br" aria-label="Pedro">Pedro Victor</a>
+            <a href=" www.linkedin.com/in/laura-sofia-0a5b06326" aria-label="X">Laura Sophia</a>
+            <a href="#" aria-label="Gusta">Gustavo Deodato</a>
+            <a href="#" aria-label="Ana">Ana Clara</a>
+            <a href="" aria-label="Bia">Beatriz</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

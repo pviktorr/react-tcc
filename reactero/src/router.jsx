@@ -7,6 +7,7 @@ import Inicio from './pages/Inicio/Inicio'
 import Perfil from './pages/Perfil/perfil'
 import NovaSenha from './pages/NovaSenha/Novasenha'
 import RecSenha from './pages/RecSenha/RecSenha'
+import Sobre from './pages/Sobre/sobre'
 import CodigoRec from './pages/CodigoRec/CodigoRec'
 
 import { Routes, Route } from "react-router-dom";
@@ -15,7 +16,7 @@ function AppRoutes() {
       <Routes>
         {/* Rota padrão */}
         <Route path="/" element={<Inicio />} />
-        <Route path="/inicio" element={<Inicio />} />
+        <Route path="/sobre" element={<Sobre />} />
         <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
         {/* Demais rotas */}
@@ -24,6 +25,7 @@ function AppRoutes() {
         <Route path="/nova-senha" element={<NovaSenha />} />
         <Route path="/recuperar-senha" element={<RecSenha />} />
         <Route path="/codigo-recuperacao" element={<CodigoRec />} />
+        <Route path="/sobre" element={<Sobre />} />
       </Routes>
     )
 }

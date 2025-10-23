@@ -196,7 +196,7 @@ function Perfil() {
                     type="text" 
                     placeholder="Nome Completo" 
                     value={nome}
-                    
+                    readOnly
                   />
                 </div>
               </div>

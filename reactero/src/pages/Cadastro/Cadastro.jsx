@@ -58,14 +58,13 @@ const cadastro = () => {
         // Garante que nome/email já apareçam na Perfil imediatamente
         if (formData?.nome) localStorage.setItem('usuarioNome', String(formData.nome));
         if (formData?.email) localStorage.setItem('usuarioEmail', String(formData.email));
-        // Redirecionar para rota correta (minúsculo)
-        window.location.href = '/perfil';
+        // Redirecionar para login após cadastro
+        window.location.href = '/Login';
       } else {
         // Erro do servidor
         setError(data.message || 'Erro ao fazer login');
       }
     } catch (err) {
-      // Erro de rede
       setError('Erro de conexão. Tente novamente.');
       console.error('Erro no Cadastro:', err);
     } finally {

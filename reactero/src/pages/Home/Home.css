@@ -1,14 +1,14 @@
 /* Base */
 .home__root {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   background: linear-gradient(to right, #4da9ff, #64dfcb);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  overflow-x: hidden;
-  padding: 16px 12px;
+  overflow: hidden;
+  padding: 8px 12px 0 12px;
 }
 
 /* Navbar */
@@ -54,19 +54,20 @@
 
 /* Slideshow Container */
 .slideshow-container {
-  width: 92%;
-  max-width: 1200px;
-  margin: 24px auto;
+  width: 80%;
+  max-width: 900px;
+  margin: auto;
   background: #ffffff;
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   position: relative;
-  flex: 1;
+  flex: 0 1 auto;
+  max-height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 0;
+  overflow: hidden;
 }
 
 /* Slides */
@@ -87,23 +88,25 @@
 .slide img {
   width: 100%;
   max-width: 100%;
+  max-height: 50vh;
   height: auto;
+  object-fit: contain;
   border-radius: 10px;
-  margin-top: 15px;
+  margin-top: 8px;
 }
 
 /* Dots */
 .dots {
-  margin-top: 20px;
+  margin-top: 8px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   z-index: 10;
 }
 
 .dot {
-  height: 12px;
-  width: 12px;
+  height: 10px;
+  width: 10px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -146,84 +149,57 @@
   all: unset;
 }
 
-/* Navbar SVG animated styles */
-.outline {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.rect {
-  transition: 0.3s;
-  stroke: transparent; /* escondido por padrão */
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-
-.nav {
-  position: relative;
-  width: 400px;
-  height: 60px;
-  margin: 12px auto 16px;
-}
-
-.container:hover .outline .rect {
-  transition: 0.3s;
-  stroke: #000; /* mostra contorno sólido no hover */
-}
-
-/* Reset quickly when mouse leaves the container to evitar 'rebarba' */
-.container:not(:hover) .outline .rect {
-  transition: 0.2s;
-  stroke: transparent; /* some totalmente ao sair */
-}
-
-.container {
-  position: absolute;
-  inset: 0;
-  background: #fff;
+/* Navbar Simples */
+.home-navbar {
+  background: #ffffff;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 0.5em;
-  border-radius: 12px; /* cantos combinando com o SVG */
-  overflow: hidden; /* evita vazamentos do stroke nas bordas */
+  gap: 40px;
+  padding: 12px 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 8px auto 8px;
+  width: fit-content;
+  flex-shrink: 0;
 }
 
-.btn {
-  padding: 0.5em 1.5em;
-  color: #000;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s !important;
+.home-navbar__link {
+  color: #222;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.btn:hover {
-  background: #fff3;
-}
-
-/* Comportamento uniforme para qualquer botão */
-.btn:hover ~ .outline .rect {
-  stroke: #000;
+.home-navbar__link:hover {
+  background: transparent;
+  color: inherit;
+  text-decoration: underline;
 }
 
 /* Footer simples da Home */
 .home-footer {
-  width: 100%;
+  width: 100vw;
   background: #ffffff;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
-  padding: 12px 0;
+  padding: 6px 0;
+  margin-top: auto;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  flex-shrink: 0;
 }
 
 .home-footer__content {
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 0 16px;
+  padding: 0 32px;
 }
 
 .home-footer__contact {
@@ -231,18 +207,20 @@
   flex-direction: column;
   color: #222;
   gap: 4px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .home-footer__social {
   display: flex;
-  gap: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .home-footer__social a {
   color: #0d6efd;
   text-decoration: none;
   font-weight: 600;
+  font-size: 13px;
 }
 
 .home-footer__social a:hover {

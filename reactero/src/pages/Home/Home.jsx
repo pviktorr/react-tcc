@@ -28,34 +28,12 @@ function Home() {
 
   return (
     <div className="home__root">
-      {/* Navbar animada com SVG */}
-      <div className="nav">
-        <div className="container">
-          <Link to="/home" className="btn">Home</Link>
-          <Link to="/perfil" className="btn">Perfil</Link>
-          <Link to="/sobre" className="btn">Sobre</Link>
-          
-          <svg
-            className="outline"
-            overflow="visible"
-            width="400"
-            height="60"
-            viewBox="0 0 400 60"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              className="rect"
-              pathLength="100"
-              x="0"
-              y="0"
-              width="400"
-              height="60"
-              fill="transparent"
-              strokeWidth="5"
-            ></rect>
-          </svg>
-        </div>
-      </div>
+      {/* Navbar */}
+      <nav className="home-navbar">
+        <Link to="/home" className="home-navbar__link">Home</Link>
+        <Link to="/perfil" className="home-navbar__link">Perfil</Link>
+        <Link to="/sobre" className="home-navbar__link">Sobre</Link>
+      </nav>
 
       {/* Slideshow */}
       <main className="slideshow-container">

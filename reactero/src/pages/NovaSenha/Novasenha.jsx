@@ -55,7 +55,7 @@ const NovaSenha = () => {
         confirmarSenha: confirmarSenha,
       };
       console.log('Enviando redefinição de senha com payload:', payload);
-      const response = await fetch('http://localhost:8080/v1/teajuda/redefinicao-de-senha', {
+      const response = await fetch('http://localhost:8080/v1/teajuda/solicitacao-de-senha', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

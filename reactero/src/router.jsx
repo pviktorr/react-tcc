@@ -15,9 +15,9 @@ function AppRoutes() {
     return (
       <Routes>
         {/* Rota padrão */}
-        <Route path="/" element={<Inicio />} />
+        <Route path="/inicio" element={<Inicio />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
         {/* Demais rotas */}
         <Route path="/Login" element={<LoginPage />} />

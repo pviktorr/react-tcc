@@ -20,7 +20,7 @@ function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      
       <section className="hero">
         <div className="hero-content">
           <h1>Bem-vindo ao TeAjuda</h1>
@@ -94,13 +94,7 @@ function Home() {
               <a href="#" target="_blank" rel="noopener noreferrer">Beatriz</a>
             </div>
           </div>
-          <div className="footer-section">
-            <h4>Links Rápidos</h4>
-            <Link to="/home">Home</Link>
-            <Link to="/sobre">Sobre</Link>
-            <Link to="/contato">Contato</Link>
-            <Link to="/privacidade">Política de Privacidade</Link>
-          </div>
+       
         </div>
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} TeAjuda. Todos os direitos reservados.</p>

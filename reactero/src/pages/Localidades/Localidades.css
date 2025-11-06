@@ -1,0 +1,285 @@
+/* Localidades.css */
+.localidades-container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navigation */
+.nav {
+  background-color: #4a90e2;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 100;
+}
+
+.nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.nav .btn {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav .btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Cabeçalho */
+.cabecalho-tea {
+  background: linear-gradient(135deg, #4285F4, #34A853);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.cabecalho-tea h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.cabecalho-tea p {
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+}
+
+/* Layout principal */
+.conteudo-principal {
+  display: flex;
+  max-width: 1800px; 
+  margin: 0 auto;
+  padding: 20px;
+  gap: 25px;
+  height: 85vh;
+  min-height: 600px;
+}
+
+/* LISTA LATERAL - Lado esquerdo (MENOR) */
+.lista-lateral {
+  width: 40%;
+  min-width: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cabecalho-lista {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+}
+
+.cabecalho-lista h2 {
+  margin: 0;
+  color: #202124;
+  font-size: 1.2em;
+}
+
+.contador {
+  background: #4285F4;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.8em;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+/* Lista scrollável */
+.lugares-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* Cartões laterais */
+.cartao-lugar-lateral {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.cartao-lugar-lateral:hover {
+  background: #f8f9fa;
+}
+
+.cabecalho-cartao-lateral {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.emoji-lugar {
+  font-size: 1.3em;
+  flex-shrink: 0;
+}
+
+.info-basica {
+  flex: 1;
+}
+
+.info-basica h3 {
+  margin: 0 0 5px 0;
+  color: #202124;
+  font-size: 1em;
+}
+
+.endereco {
+  margin: 0;
+  color: #5f6368;
+  font-size: 0.85em;
+}
+
+.detalhes-lugar {
+  margin-left: 35px;
+}
+
+.telefone {
+  margin: 0 0 5px 0;
+  color: #1a73e8;
+  font-size: 0.85em;
+}
+
+.descricao {
+  margin: 0;
+  color: #5f6368;
+  font-size: 0.8em;
+  line-height: 1.4;
+}
+
+/* MAPA CONTAINER - Lado direito (MAIOR AGORA) */
+.mapa-container {
+  flex: 1;
+  min-width: 0; /* Permite que o container encolha abaixo do conteúdo */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.mapa-estavel {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: 10px;
+}
+
+/* Cores para cada tipo */
+.cor-terapia {
+  border-left: 3px solid #34A853;
+}
+
+.cor-educacao {
+  border-left: 3px solid #4285F4;
+}
+
+.cor-saude {
+  border-left: 3px solid #EA4335;
+}
+
+.cor-lazer {
+  border-left: 3px solid #FBBC05;
+}
+
+/* Popup do mapa */
+.popup-tea {
+  text-align: center;
+  min-width: 180px;
+}
+
+.emoji-popup {
+  font-size: 1.5em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.popup-tea h3 {
+  margin: 0 0 8px 0;
+  color: #1a73e8;
+  font-size: 1em;
+}
+
+.popup-tea p {
+  margin: 3px 0;
+  font-size: 0.8em;
+}
+
+/* Scrollbar */
+.lugares-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lugares-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.lugares-scroll::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+  .conteudo-principal {
+    flex-direction: column;
+    height: auto;
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  .lista-lateral {
+    width: 100%;
+    min-width: 100%;
+    height: 40vh;
+    min-height: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .mapa-container {
+    width: 100%;
+    height: 60vh;
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .conteudo-principal {
+    padding: 10px;
+    gap: 15px;
+  }
+  
+  .lista-lateral {
+    height: 45vh;
+    min-height: 250px;
+  }
+  
+  .mapa-container {
+    height: 50vh;
+    min-height: 400px;
+  }
+}
+
+/* Ajustes para telas muito grandes */
+@media (min-width: 2000px) {
+  .conteudo-principal {
+    max-width: 90%;
+  }
+}

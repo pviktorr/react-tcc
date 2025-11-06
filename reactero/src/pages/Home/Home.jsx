@@ -16,6 +16,7 @@ function Home() {
             <Link to="/home" className="menu-link active">Home</Link>
             <Link to="/perfil" className="menu-link">Perfil</Link>
             <Link to="/sobre" className="menu-link">Sobre</Link>
+            <Link to="/localidade" className="menu-link">Localidades</Link>
           </div>
         </div>
       </nav>
@@ -62,9 +63,33 @@ function Home() {
             <p>O TeAjuda nasceu da necessidade de criar uma ponte entre profissionais, famílias e pessoas no espectro autista, oferecendo ferramentas que facilitam o acompanhamento e desenvolvimento contínuo.</p>
             <Link to="/sobre" className="btn btn-outline">Conheça nossa história</Link>
           </div>
-          <div className="about-image">
-            <img src="https://via.placeholder.com/500x400" alt="Sobre o TeAjuda" />
+          
+        </div>
+      </section>
+
+      {/* Locations Section */}
+      <section className="locations">
+        <div className="locations-content">
+          <h2>Encontre Locais de Apoio</h2>
+          <p>Descubra clínicas, escolas e locais especializados em TEA próximos a você.</p>
+          <div className="locations-grid">
+            <div className="location-card">
+              <div className="location-icon">🏥</div>
+              <h3>Clínicas</h3>
+              <p>Encontre profissionais especializados em TEA</p>
+            </div>
+            <div className="location-card">
+              <div className="location-icon">🏫</div>
+              <h3>Escolas</h3>
+              <p>Instituições com metodologias inclusivas</p>
+            </div>
+            <div className="location-card">
+              <div className="location-icon">🏠</div>
+              <h3>Lazer</h3>
+              <p>Lugares acolhedores para momentos de diversão</p>
+            </div>
           </div>
+          <Link to="/localidade" className="btn btn-outline">Ver Mapa Completo</Link>
         </div>
       </section>
 

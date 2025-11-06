@@ -9,9 +9,10 @@ function Sobre() {
             {/* Navbar */}
             <div className="nav">
                 <div className="container">
-                    <Link to="/" className="btn">Home</Link>
+                    <Link to="/home" className="btn">Home</Link>
                     <Link to="/perfil" className="btn">Perfil</Link>
                     <Link to="/sobre" className="btn">Sobre</Link>
+                      <Link to="/localidade" className="btn">Localidade</Link>
                     
                     
                 </div>

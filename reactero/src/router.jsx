@@ -2,8 +2,8 @@ import React from "react";
 import Bemvindo from './pages/BemVindo/bemvindo';
 import LoginPage from './pages/Login/Login'; 
 import Cadastro from './pages/Cadastro/Cadastro'; 
-import Home from './pages/Home/home'
-
+import Home from './pages/Home/Home'
+import Localidades from './pages/Localidades/Localidades'
 import Perfil from './pages/Perfil/perfil'
 import NovaSenha from './pages/NovaSenha/Novasenha'
 import RecSenha from './pages/RecSenha/RecSenha'
@@ -19,6 +19,7 @@ function AppRoutes() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
+         <Route path="/localidade" element={<Localidades />} />
 
         {/* Demais rotas */}
         <Route path="/Login" element={<LoginPage />} />

@@ -29,7 +29,7 @@ const cadastro = () => {
 
     try {
       // FETCH PARA API DE cadastro
-      const response = await fetch('http://localhost:8080/v1/teajuda/usuario', {
+      const response = await fetch('http://10.107.144.28:8080/v1/teajuda/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

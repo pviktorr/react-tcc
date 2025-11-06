@@ -35,7 +35,7 @@ const Login = () => {
 
     try {
       // FETCH PARA API DE LOGIN
-      const response = await fetch('http://localhost:8080/v1/teajuda/usuario/login', {
+      const response = await fetch('http://10.107.144.28:8080/v1/teajuda/usuario/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

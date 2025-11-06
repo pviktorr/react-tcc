@@ -87,16 +87,16 @@
 }
 
 .next-button {
-  background: linear-gradient(#1892FF, #0E5899);
-  color: white;
-  padding: 22px 65px;
-  font-size: 23px;
-  font-weight: 600; 
-  border-radius: 20px;
+  background: #1e90ff;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 20px 45px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s; /* Faltou o "all" */
-  border: none; /* Remove a borda padrão */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  width: 200px;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
 }
 
 .next-button:hover {

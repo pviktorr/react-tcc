@@ -29,7 +29,7 @@ function Perfil() {
       }
 
       try {
-        const response = await fetch(`http://localhost:8080/v1/teajuda/usuario/${userId}`, {
+        const response = await fetch(`http://10.107.144.28:8080/v1/teajuda/usuario/${userId}`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -139,6 +139,8 @@ function Perfil() {
           <Link to="/home" className="btn">Home</Link>
           <Link to="/perfil" className="btn">Perfil</Link>
           <Link to="/sobre" className="btn">Sobre</Link>
+          <Link to="/localidade" className="btn">Localidades</Link>
+
           
         </div>
       </div>

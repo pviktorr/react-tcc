@@ -17,7 +17,7 @@ function RecSenha() {
 
 
     try {
-      const response = await fetch('http://localhost:8080/v1/teajuda/solicitacao-de-senha', {
+      const response = await fetch('http://10.107.144:8080/v1/teajuda/solicitacao-de-senha', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

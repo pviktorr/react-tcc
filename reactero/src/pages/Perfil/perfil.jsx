@@ -9,7 +9,7 @@ function Perfil() {
   const [nome, setNome] = useState(localStorage.getItem('usuarioNome') || '');
   const [email, setEmail] = useState(localStorage.getItem('usuarioEmail') || '');
   const [senha, setSenha] = useState('');
-  const [profileImage, setProfileImage] = useState('https://via.placeholder.com/200');
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -59,16 +59,7 @@ function Perfil() {
     return re.test(email.toLowerCase());
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();

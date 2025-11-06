@@ -1,9 +1,9 @@
 import React from "react";
+import Bemvindo from './pages/BemVindo/bemvindo';
+import LoginPage from './pages/Login/Login'; 
+import Cadastro from './pages/Cadastro/Cadastro'; 
+import Home from './pages/Home/home'
 
-import LoginPage from './pages/Login/Login'; // Importe a sua página de login
-import Cadastro from './pages/Cadastro/Cadastro'; // Importe a sua página de cadastro
-import Home from './pages/Home/Home'
-import Inicio from './pages/Inicio/Inicio'
 import Perfil from './pages/Perfil/perfil'
 import NovaSenha from './pages/NovaSenha/Novasenha'
 import RecSenha from './pages/RecSenha/RecSenha'
@@ -15,10 +15,11 @@ function AppRoutes() {
     return (
       <Routes>
         {/* Rota padrão */}
-        <Route path="/inicio" element={<Inicio />} />
+        <Route path="/" element={<Bemvindo />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
+
         {/* Demais rotas */}
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/cadastro" element={<Cadastro />} />

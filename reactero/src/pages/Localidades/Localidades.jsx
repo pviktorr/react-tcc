@@ -7,31 +7,46 @@ import 'leaflet/dist/leaflet.css';
 function Localidades() {
   const lugaresTEA = [
     {
-      nome: "Centro de Terapia ABC",
-      tipo: "terapia",
-      endereco: "Rua das Flores, 123",
-      telefone: "(11) 9999-8888",
-      lat: -23.5505,
-      lng: -46.6333,
+      nome: "Sala Sensorial Estação Santa Cruz (Metrô/ViaMobilidade)",
+    
+      endereco: "Estação Santa Cruz (Linha 5-Lilás), Vila Mariana, São Paulo/SP",
+      telefone: "(11) 3116-7406",
+      lat:-23.52332,
+      lng: -46.6385,
       descricao: "Atendimento com psicólogos e terapeutas especializados"
     },
     {
-      nome: "Escola Inclusiva Alegria",
-      tipo: "educacao", 
-      endereco: "Av. Principal, 456",
-      telefone: "(11) 7777-6666",
-      lat: -23.5510,
-      lng: -46.6340,
-      descricao: "Escola com metodologia adaptada para crianças TEA"
+      nome: "Unidade de Referência em Autismo Prof. Marcos Tomanik Mercadante (AMA - Vila Mariana)",
+    
+      endereco: "Rua Capitão Cavalcanti, 268 – Vila Mariana, São Paulo/SP",
+      telefone: "(11) 3466-2600",
+      lat: -23.5878,
+      lng: -46.6371,
+      descricao: "Unidade que oferece atendimento e serviços especializados para pessoas com Transtorno do Espectro Autista (AMA)."
     },
     {
-      nome: "Clínica Bem Estar",
-      tipo: "saude",
-      endereco: "Praça da Paz, 789",
-      telefone: "(11) 5555-4444",
-      lat: -23.5498,
-      lng: -46.6325,
-      descricao: "Acompanhamento médico e terapias integrativas"
+      nome: "TEAjudo SabiaMente",
+      endereco: "Rua Cantagalo, 678. Tatuapé – São Paulo – SP. CEP 03319-000",
+      telefone: "(11) 2096-4938 / (11) 99486-0408 (WhatsApp)",
+      lat: -23.5459,
+      lng: -46.5683,
+      descricao: "Unidade especializada do Governo de SP com serviços e apoio para autistas, incluindo sala de interação multissensorial e espaço de acolhimento para crises."
+    },
+    {
+      nome: "Centro TEA Paulista",
+      endereco: "Rua Galileo Emendabili, 99, Jardim Humaitá – São Paulo/SP",
+      telefone: "(11) 3116-7406",
+      lat: -23.52332,
+      lng: -46.74369,
+      descricao: "Unidade especializada do Governo de SP com serviços e apoio para autistas, incluindo sala de interação multissensorial e espaço de acolhimento para crises."
+    },
+    {
+      nome: "Sala Sensorial Estação Tatuapé (CPTM/Metrô)",
+      endereco: "Estação Tatuapé (Linhas 11, 12 da CPTM e Linha 3-Vermelha do Metrô), Tatuapé, São Paulo/SP",
+      telefone: "Não disponível publicamente para a Sala, mas a CPTM/Metrô possuem canais de contato.",
+      lat: -23.5413,
+      lng: -46.5779,
+      descricao: "Espaço que oferece conforto visual e acústico para pessoas autistas e neurodivergentes em crises sensoriais ou com alta sensibilidade a estímulos externos."
     }
   ];
 

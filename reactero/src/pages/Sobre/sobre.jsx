@@ -1,22 +1,11 @@
 
-import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 import './Sobre.css';
-
 
 function Sobre() {
     return (
         <div className="sobre__root">
-            {/* Navbar */}
-            <div className="nav">
-                <div className="container">
-                    <Link to="/home" className="btn">Home</Link>
-                    <Link to="/perfil" className="btn">Perfil</Link>
-                    <Link to="/sobre" className="btn">Sobre</Link>
-                      <Link to="/localidade" className="btn">Localidades</Link>
-                    
-                    
-                </div>
-            </div>
+            <Navbar />
 
             <main className="sobre-container">
                 <div className="sobre-content">

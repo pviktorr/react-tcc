@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 import './perfil.css';
 import senhaIcon from '../../assets/senha.png';
 import '../Home/Home.css';
@@ -132,49 +133,31 @@ function Perfil() {
   };
 
   return (
-    <>
-      {/* Navbar igual à da Home */}
-      <div className="nav">
-        <div className="container">
-          <Link to="/home" className="btn">Home</Link>
-          <Link to="/perfil" className="btn">Perfil</Link>
-          <Link to="/sobre" className="btn">Sobre</Link>
-          <Link to="/localidade" className="btn">Localidades</Link>
-
-          
-        </div>
-      </div>
-
-      <div className="perfil-body">
+    <div className="perfil-body">
+      <Navbar />
       <main className="perfil-main-content">
         <div className="perfil-container">
-          <div className="background">
-            
-          </div>
           <section className="perfil-user">
-            {nome ? (
-              <h2 className="perfil-user__name">{nome}</h2>
-            ) : null}
-            {email ? (
-              <p className="perfil-user__email">{email}</p>
-            ) : null}
+            {nome && <h2 className="perfil-user__name">{nome}</h2>}
+            {email && <p className="perfil-user__email">{email}</p>}
           </section>
 
-          <section className="perfil-form">
-            <form onSubmit={handleSubmit}>
-              <div className="perfil-form-group">
-                <label htmlFor="nome">Nome</label>
-                <div className="perfil-input-icon">
-                  <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Nome" />
-                  <input 
-                    id="nome" 
-                    type="text" 
-                    placeholder="Nome Completo" 
-                    value={nome}
-                    readOnly
-                  />
-                </div>
+        <section className="perfil-form">
+          <form onSubmit={handleSubmit}>
+            <div className="perfil-form-group">
+              <label htmlFor="nome">Nome</label>
+              <div className="perfil-input-icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/user.png" alt="Nome" />
+                <input 
+                  id="nome" 
+                  type="text" 
+                  placeholder="Nome Completo" 
+                  value={nome}
+                  readOnly
+                />
               </div>
+            </div>
+
 
               <div className="perfil-form-group">
                 <label htmlFor="email">Email</label>
@@ -223,12 +206,11 @@ function Perfil() {
                   {loading ? 'Alterando...' : 'ALTERAR'}
                 </button>
               </div>
-            </form>
+              </form>
           </section>
         </div>
       </main>
-      </div>
-    </>
+    </div>
   );
 }
 

@@ -16,39 +16,57 @@
 
 /* CONTEÚDO PRINCIPAL */
 .perfil-main-content {
-  padding: 40px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 100px);
+  width: 100%;
 }
 
 .perfil-container {
   display: flex;
-  gap: 40px;
-  max-width: 1100px;
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 60vh; /* Altura mínima para centralizar verticalmente */
+  padding: 20px;
 }
 
-/* Cabeçalho com dados do usuário */
+/* Seção de informações do usuário */
 .perfil-user {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 260px;
+  flex: 0 0 300px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  margin-top: 30px; /* Espaço acima do card */
 }
 
 .perfil-user__name {
   font-size: 24px;
   font-weight: 800;
   color: #222;
+  margin: 0 0 20px 0;
 }
 
 .perfil-user__email {
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
+  background: #f8f9fa;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin: 10px 0 0 0;
+  word-break: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
+  line-height: 1.4;
+  display: inline-block;
 }
 
 /* LADO ESQUERDO - Foto de Perfil */
@@ -93,10 +111,12 @@
 /* LADO DIREITO - Formulário */
 .perfil-form {
   flex: 1;
+  min-width: 300px;
+  max-width: 600px;
   background: white;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .perfil-form form {
@@ -109,6 +129,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 20px;
 }
 
 .perfil-form-group label {
@@ -184,20 +205,25 @@
 }
 
 .perfil-btn-primary {
-  background: #1e90ff;
+  background: #4da9ff;
   color: white;
   border: none;
-  padding: 12px 40px;
+  padding: 14px 40px;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto 0;
+  display: block;
 }
 
 .perfil-btn-primary:hover {
-  background: #1873cc;
-  transform: scale(1.05);
+  background: #3a86ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77, 169, 255, 0.3);
 }
 
 .perfil-btn-primary:active {

@@ -9,6 +9,8 @@ import NovaSenha from './pages/NovaSenha/Novasenha'
 import RecSenha from './pages/RecSenha/RecSenha'
 import Sobre from './pages/Sobre/sobre'
 import CodigoRec from './pages/CodigoRec/CodigoRec'
+import CalendarPage from './pages/Calendario/Calendario'
+import Registros from './pages/Registros/Registros'
 
 import { Routes, Route } from "react-router-dom";
 function AppRoutes() {
@@ -28,6 +30,8 @@ function AppRoutes() {
         <Route path="/recuperar-senha" element={<RecSenha />} />
         <Route path="/codigo-recuperacao" element={<CodigoRec />} />
         <Route path="/sobre" element={<Sobre />} />
+        <Route path="/calendario" element={<CalendarPage />} />
+        <Route path="/registros" element={<Registros />} />
       </Routes>
     )
 }

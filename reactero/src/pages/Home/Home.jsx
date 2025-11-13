@@ -15,8 +15,9 @@ function Home() {
           <div className="menu">
             <Link to="/home" className="menu-link active">Home</Link>
             <Link to="/perfil" className="menu-link">Perfil</Link>
-            <Link to="/sobre" className="menu-link">Sobre</Link>
+            <Link to="/calendario" className="menu-link">Calendário</Link>
             <Link to="/localidade" className="menu-link">Localidades</Link>
+            <Link to="/sobre" className="menu-link">Sobre</Link>
           </div>
         </div>
       </nav>

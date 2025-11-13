@@ -1,10 +1,18 @@
 // Localidades.jsx
+import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 import './Localidades.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 function Localidades() {
+  // Adicionando um estilo para o container principal para dar espaço para a navbar fixa
+  const containerStyle = {
+    paddingTop: '80px',  // Altura da navbar + um pouco de espaço
+    minHeight: '100vh',
+    backgroundColor: '#f5f5f5',
+  };
   const lugaresTEA = [
     {
       nome: "Sala Sensorial Estação Santa Cruz (Metrô/ViaMobilidade)",
@@ -60,16 +68,9 @@ function Localidades() {
   };
 
   return (
-    <div className="localidades-container">
-      {/* Navbar */}
-      <div className="nav">
-        <div className="container">
-          <Link to="/home" className="btn">Home</Link>
-          <Link to="/perfil" className="btn">Perfil</Link>
-          <Link to="/sobre" className="btn">Sobre</Link>
-          <Link to="/localidade" className="btn">Localidades</Link>
-        </div>
-      </div>
+    <div style={containerStyle}>
+      <Navbar />
+      <div className="localidades-container">
       
       <div className="conteudo-principal">
         {/* LISTA DE LUGARES - Lado esquerdo */}
@@ -126,6 +127,7 @@ function Localidades() {
         </div>
       </div>
     </div>
+  </div>
   );
 }
 

@@ -1,14 +1,15 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+import './App.css';
+import Relatorio from './pages/Relatorio/Relatorio';
+import Header from './components/Header';
 
-import AppRoutes from './router.jsx'
-import { Routes } from 'react-router-dom'
 function App() {
   return (
     <div>
-      <AppRoutes/>
+      <Header />
+      <Relatorio />
     </div>
   );
 }
 
-export default App
+export default App;

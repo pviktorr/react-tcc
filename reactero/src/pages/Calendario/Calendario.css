@@ -1,29 +1,40 @@
 .calendario-container {
-  padding-top: 90px; /* Aumentando o espaçamento no topo */
+  padding-top: 20px;
   min-height: 100vh;
   background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 60px;
-  padding: 20px 50px 50px; /* Reduzindo o padding superior para 20px */
-  min-height: calc(100vh - 90px); /* Ajustando a altura */
+  gap: 40px;
+  padding: 30px;
+  min-height: 50vh;
+  max-height: 80vh;
   font-family: Arial, sans-serif;
+  width: 90%;
   max-width: 1400px;
   margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .calendario {
   background: #fff;
-  padding: 40px;
+  padding: 30px;
   border-radius: 15px;
-  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
-  width: 520px;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .cabecalho {
@@ -67,40 +78,53 @@
 .dias {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 10px;
+  flex-grow: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .container {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    height: auto;
+    max-height: none;
     padding: 20px;
   }
   
-  .calendario {
+  .calendario, .eventos {
     width: 100%;
+    max-width: 100%;
     margin-bottom: 20px;
   }
   
   .dias {
-    grid-template-columns: repeat(7, 1fr);
+    min-height: 300px;
   }
   
   .dia {
-    min-height: 60px;
+    min-height: 50px;
   }
 }
 
 .dia {
-  height: 70px;
+  aspect-ratio: 1;
+  min-height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #e9ecef;
+  background: #f8f9fa;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #333;
+  transition: all 0.2s ease;
+  border: 1px solid #e9ecef;
+}
+
+.dia:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .dia:hover {
@@ -115,11 +139,14 @@
 }
 
 .eventos {
-  background: #fff;
-  padding: 40px;
+  background: #f8f9fa;
+  padding: 30px;
   border-radius: 15px;
-  width: 450px;
-  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cabecalho-evento {

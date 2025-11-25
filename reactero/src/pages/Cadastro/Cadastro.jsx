@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import Fundo from '../../assets/fundo.png'
-import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom';
+import Fundo from '../../assets/fundo.png';
+import logo from '../../assets/logo.png';
+import { Link, useNavigate } from 'react-router-dom';
 import './Cadastro.css';
 
 const cadastro = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    nome:'',
+    nome: '',
     email: '',
     senha: ''
   });
@@ -19,7 +20,16 @@ const cadastro = () => {
       ...prev,
       [name]: value
     }));
-    setError(''); // Limpa erro ao digitar
+    setError(''); 
+  };
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 8; 
   };
 
   const handleSubmit = async (e) => {
@@ -27,46 +37,98 @@ const cadastro = () => {
     setLoading(true);
     setError('');
 
+   
+    if (!formData.nome || !formData.email || !formData.senha) {
+      setError('Por favor, preencha todos os campos');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.nome.length < 3) {
+      setError('O nome deve ter pelo menos 3 caracteres');
+      setLoading(false);
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      setError('Por favor, insira um email válido');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.email.length > 100) {
+      setError('O email não pode ter mais de 100 caracteres');
+      setLoading(false);
+      return;
+    }
+
+    if (!validatePassword(formData.senha)) {
+      setError('A senha deve ter pelo menos 8 caracteres');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.senha.length > 255) {
+      setError('A senha não pode ter mais de 255 caracteres');
+      setLoading(false);
+      return;
+    }
+
     try {
-      // FETCH PARA API DE cadastro
-      const response = await fetch('http://10.107.144.28:8080/v1/teajuda/usuario', {
+      console.log('Enviando requisição de cadastro:', {
+        nome: formData.nome,
+        email: formData.email,
+        senha: '[PROTECTED]' 
+      });
+
+      const response = await fetch('http://localhost:8080/v1/teajuda/usuario', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email: formData.email,
-          nome:formData.nome,
+          email: formData.email.trim(),
+          nome: formData.nome.trim(),
           senha: formData.senha
         })
       });
+
+      console.log('Resposta do servidor:', response.status, response.statusText);
       
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Erro na resposta:', errorData);
+        throw new Error(errorData.message || 'Erro ao cadastrar');
+      }
 
       const data = await response.json();
+      console.log('Dados do cadastro:', data);
 
-      if (response.ok) {
-        // Cadastro OK: salvar sessão e dados do usuário
-        console.log('Cadastro:', data);
-        const tokenCandidate = data?.token || data?.jwt || data?.access_token || data?.accessToken || data?.data?.token;
-        if (tokenCandidate) {
-          localStorage.setItem('token', String(tokenCandidate));
-        }
-        try {
-          const userId = data?.usuarioId || data?.id || data?.usuario?.id || data?.usuario?.usuarioId;
-          if (userId) localStorage.setItem('usuarioId', String(userId));
-        } catch (_) {}
-        // Garante que nome/email já apareçam na Perfil imediatamente
-        if (formData?.nome) localStorage.setItem('usuarioNome', String(formData.nome));
-        if (formData?.email) localStorage.setItem('usuarioEmail', String(formData.email));
-        // Redirecionar para login após cadastro
-        window.location.href = '/Login';
-      } else {
-        // Erro do servidor
-        setError(data.message || 'Erro ao fazer login');
+     
+      const tokenCandidate = data?.token || data?.jwt || data?.access_token || data?.accessToken || data?.data?.token;
+      if (tokenCandidate) {
+        localStorage.setItem('token', String(tokenCandidate));
       }
+      
+      try {
+        const userId = data?.usuarioId || data?.id || data?.usuario?.id || data?.usuario?.usuarioId;
+        if (userId) localStorage.setItem('usuarioId', String(userId));
+      } catch (_) {}
+      
+      
+      if (formData?.nome) localStorage.setItem('usuarioNome', String(formData.nome));
+      if (formData?.email) localStorage.setItem('usuarioEmail', String(formData.email));
+      
+    
+      alert('Cadastro realizado com sucesso!');
+      
+      
+      navigate('/Login');
+      
     } catch (err) {
-      setError('Erro de conexão. Tente novamente.');
       console.error('Erro no Cadastro:', err);
+      setError('Erro ao conectar ao servidor. Verifique sua conexão e tente novamente.');
     } finally {
       setLoading(false);
     }
@@ -141,7 +203,7 @@ const cadastro = () => {
       
 
       
-        {/* Rodapé */}
+        
         <div className="login-footer">
            <p> Já possui conta? <Link to={'/Login'}>Login  </Link></p>
         </div>

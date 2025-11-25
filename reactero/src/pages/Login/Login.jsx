@@ -25,7 +25,7 @@ const Login = () => {
       ...prev,
       [name]: value
     }));
-    setError(''); // Limpa erro ao digitar
+    setError(''); 
   };
 
   const handleSubmit = async (e) => {
@@ -33,15 +33,35 @@ const Login = () => {
     setLoading(true);
     setError('');
 
+  
+    if (!formData.email || !formData.senha) {
+      setError('Por favor, preencha todos os campos');
+      setLoading(false);
+      return;
+    }
+
+
+    if (formData.email.length > 100) {
+      setError('O email não pode ter mais de 100 caracteres');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.senha.length > 255) {
+      setError('A senha não pode ter mais de 255 caracteres');
+      setLoading(false);
+      return;
+    }
+
     try {
-      // FETCH PARA API DE LOGIN
-      const response = await fetch('http://10.107.144.28:8080/v1/teajuda/usuario/login', {
+      const response = await fetch('http://localhost:8080/v1/teajuda/usuario/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email: formData.email,
+          email: formData.email.trim(),
           senha: formData.senha
         })
       });
@@ -49,14 +69,14 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Login bem-sucedido
+       
         console.log('Login realizado:', data);
-        // Extrai token de forma robusta e só persiste se existir
+        
         const tokenCandidate = data?.token || data?.jwt || data?.access_token || data?.accessToken || data?.data?.token;
         if (tokenCandidate) {
           localStorage.setItem('token', String(tokenCandidate));
         }
-        // Persistir infos do usuário para a tela de Perfil
+        
         try {
           const userId = data?.usuarioId || data?.id || data?.usuario?.id || data?.usuario?.usuarioId;
           const userName = data?.usuario?.nome || data?.nome;
@@ -66,14 +86,22 @@ const Login = () => {
           if (userEmail) localStorage.setItem('usuarioEmail', String(userEmail));
         } catch (_) {}
         alert('Login realizado com sucesso!');
-        // Redirecionar para home (SPA)
+      
         navigate('/home');
       } else {
-        // Erro do servidor
-        setError(data.message || 'Erro ao fazer login');
+       
+        if (response.status === 400) {
+          setError('Email ou senha inválidos');
+        } else if (response.status === 401) {
+          setError('Não autorizado. Verifique suas credenciais.');
+        } else if (response.status === 500) {
+          setError('Erro interno do servidor. Tente novamente mais tarde.');
+        } else {
+          setError(data.message || 'Erro ao fazer login');
+        }
       }
     } catch (err) {
-      // Erro de rede
+  
       setError('Erro de conexão. Tente novamente.');
       console.error('Erro no login:', err);
     } finally {
@@ -81,12 +109,12 @@ const Login = () => {
     }
   };
   const handleGoogleLogin = () => {
-    // Integração com Google (exemplo)
+ 
     window.location.href = 'https://sua-api.com/auth/google';
   };
 
   const handleEsqueciSenha = () => {
-    // Redirecionar para página de recuperação de senha
+   
     window.location.href = '/recuperar-senha';
   };
 
@@ -132,7 +160,7 @@ const Login = () => {
             />
           </div>
 
-          {/* Link Esqueceu a senha */}
+        
           <div className="esqueci-senha-container">
             <button 
               type="button" 
@@ -143,7 +171,7 @@ const Login = () => {
             </button>
           </div>
 
-          {/* Mensagem de erro */}
+          
           {error && <div className="error-message">{error}</div>}
 
           <button 
@@ -154,7 +182,7 @@ const Login = () => {
           </button>
         </form>
 
-        {/* Rodapé */}
+     
         <div className="login-footer">
           <p>Não possui conta? <Link to={'/cadastro'}>Cadastre-se  </Link></p>
         </div>

@@ -28,24 +28,34 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 30px;
-  width: 100%;
-  max-width: 1000px;
+  align-items: flex-start;
+  gap: 40px;
+  width: 90%;
+  max-width: 1400px;
   margin: 0 auto;
-  min-height: 60vh; /* Altura mínima para centralizar verticalmente */
-  padding: 20px;
+  min-height: 70vh;
+  padding: 40px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Seção de informações do usuário */
 .perfil-user {
-  flex: 0 0 300px;
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex: 0 0 350px;
+  background: linear-gradient(145deg, #f8f9fa, #ffffff);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   text-align: center;
-  margin-top: 30px; /* Espaço acima do card */
+  margin-top: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil-user:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .perfil-user__name {
@@ -78,17 +88,19 @@
 }
 
 .perfil-photo {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 5px solid white;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 20px;
 }
 
 .perfil-photo:hover {
@@ -111,12 +123,19 @@
 /* LADO DIREITO - Formulário */
 .perfil-form {
   flex: 1;
-  min-width: 300px;
-  max-width: 600px;
+  min-width: 400px;
+  max-width: 700px;
   background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 45px 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil-form:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
 .perfil-form form {

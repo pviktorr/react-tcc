@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
 import Relatorio from './pages/Relatorio/Relatorio';
-import Header from './components/Header';
 
+import { Routes } from 'react-router-dom'
+import AppRoutes from './router.jsx';
 function App() {
   return (
     <div>
-      <Header />
-      <Relatorio />
+     
+      <AppRoutes />
     </div>
   );
 }

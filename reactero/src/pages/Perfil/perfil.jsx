@@ -137,12 +137,7 @@ function Perfil() {
       <Navbar />
       <main className="perfil-main-content">
         <div className="perfil-container">
-          <section className="perfil-user">
-            {nome && <h2 className="perfil-user__name">{nome}</h2>}
-            {email && <p className="perfil-user__email">{email}</p>}
-          </section>
-
-        <section className="perfil-form">
+          <section className="perfil-form">
           <form onSubmit={handleSubmit}>
             <div className="perfil-form-group">
               <label htmlFor="nome">Nome</label>

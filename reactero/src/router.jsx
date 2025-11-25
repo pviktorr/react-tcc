@@ -17,13 +17,12 @@ function AppRoutes() {
     return (
       <Routes>
         {/* Rota padrão */}
-        <Route path="/" element={<Bemvindo />} />
+        <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/home" element={<Home />} />
         <Route path="/perfil" element={<Perfil />} />
          <Route path="/localidade" element={<Localidades />} />
 
-        {/* Demais rotas */}
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/nova-senha" element={<NovaSenha />} />

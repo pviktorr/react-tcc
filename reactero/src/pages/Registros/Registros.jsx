@@ -26,7 +26,7 @@ const Registros = () => {
     titulo: '',
     descricao: '',
     observacoes: '',
-    humor: 'neutro',
+    humor: '',
     alimentacao: '',
     sono: '',
     comportamento: '',
@@ -281,7 +281,7 @@ const Registros = () => {
         data: '',
         descricao: '',
         observacoes: '',
-        humor: 'neutro',
+        humor: '',
         alimentacao: '',
         sono: '',
         comportamento: '',
@@ -534,17 +534,13 @@ const Registros = () => {
             
             <div className="form-group">
               <label>Humor</label>
-              <select 
-                name="humor" 
+              <input
+                type="text"
+                name="humor"
                 value={formData.humor}
                 onChange={handleInputChange}
-              >
-                <option value="muito-feliz">😊 Muito Feliz</option>
-                <option value="feliz">🙂 Feliz</option>
-                <option value="neutro">😐 Neutro</option>
-                <option value="triste">😔 Triste</option>
-                <option value="muito-triste">😢 Muito Triste</option>
-              </select>
+                placeholder="Como está o humor?"
+              />
             </div>
             
             <div className="form-group">
@@ -627,7 +623,7 @@ const Registros = () => {
                     titulo: '',
                     descricao: '',
                     observacoes: '',
-                    humor: 'neutro',
+                    humor: '',
                     alimentacao: '',
                     sono: '',
                     comportamento: '',
@@ -724,13 +720,11 @@ const Registros = () => {
                     <span className="data">
                       {registro.data ? formatarData(registro.data) : 'Data não informada'}
                     </span>
-                    <span className={`tag-humor ${registro.humor}`}>
-                      {registro.humor === 'muito-feliz' && '😊 Muito Feliz'}
-                      {registro.humor === 'feliz' && '🙂 Feliz'}
-                      {registro.humor === 'neutro' && '😐 Neutro'}
-                      {registro.humor === 'triste' && '😔 Triste'}
-                      {registro.humor === 'muito-triste' && '😢 Muito Triste'}
-                    </span>
+                    {registro.humor && (
+                      <span className="tag-humor">
+                        😊 {registro.humor}
+                      </span>
+                    )}
                   </div>
                   <div className="acoes">
                     <button 

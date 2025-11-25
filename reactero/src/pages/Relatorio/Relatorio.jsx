@@ -13,7 +13,7 @@ const Relatorios = () => {
       try {
         setCarregando(true);
 
-        const response = await fetch('/api/relatorios');
+        const response = await fetch('https:/localhost:8080/v1/teajuda/relatorio/usuario/:usuarioId'); // Substitua pela URL real da API
 
         if (!response.ok) {
           throw new Error('Erro ao buscar relatórios');

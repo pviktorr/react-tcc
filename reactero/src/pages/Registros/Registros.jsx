@@ -677,11 +677,6 @@ const Registros = () => {
                     <span className="data">
                       {registro.data ? formatarData(registro.data) : 'Data não informada'}
                     </span>
-                    {registro.humor && (
-                      <span className="tag-humor">
-                        😊 {registro.humor}
-                      </span>
-                    )}
                   </div>
                   <div className="acoes">
                     <button 

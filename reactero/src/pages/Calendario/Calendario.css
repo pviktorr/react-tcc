@@ -1,7 +1,7 @@
 .calendario-container {
   padding-top: 20px;
   min-height: 100vh;
-  background-color: #f4f4f9;
+  background-color: #15A0F5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -170,8 +170,8 @@
 }
 
 .btn-adicionar {
-  background: #007bff;
-  color: white;
+  background: #FFF;
+  color: #15A0F5;
   border: none;
   padding: 0;
   width: 60px;
@@ -187,7 +187,7 @@
 }
 
 .btn-adicionar:hover {
-  background: #0069d9;
+  background: #FFFF;
   width: auto;
   padding: 0 25px;
   border-radius: 30px;

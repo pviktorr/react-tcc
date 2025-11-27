@@ -22,11 +22,9 @@ const Registros = () => {
   const [busca, setBusca] = useState('');
   const [registroEditando, setRegistroEditando] = useState(null);
   const [formData, setFormData] = useState({
-    data: '', // Removida a data padrão
     titulo: '',
     descricao: '',
     observacoes: '',
-    humor: '',
     alimentacao: '',
     sono: '',
     comportamento: '',
@@ -216,17 +214,8 @@ const Registros = () => {
         throw new Error('A descrição é obrigatória e deve ter pelo menos 10 caracteres');
       }
       
-      if (!formData.data) {
-        throw new Error('A data é obrigatória');
-      }
-      
-      // Garantir que a data está no formato correto
-      let dataFormatada = formData.data;
-      if (formData.data.includes('/')) {
-        // Converte de dd/MM/yyyy para yyyy-MM-dd
-        const [dia, mes, ano] = formData.data.split('/');
-        dataFormatada = `${ano}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}`;
-      }
+      // A data é inserida automaticamente pela API
+      const dataAtual = new Date().toISOString().split('T')[0];
       
       // ID do usuário logado
       const usuarioId = 2;
@@ -234,8 +223,6 @@ const Registros = () => {
       // Construir o texto com todas as informações
       const textoRegistro = `
         Título: ${formData.titulo.trim()}
-        Data do registro: ${dataFormatada}
-        Humor: ${formData.humor}
         
         Descrição:
         ${formData.descricao.trim()}
@@ -252,7 +239,7 @@ const Registros = () => {
       // Preparar os dados no formato que a API espera
       const dadosParaEnviar = {
         texto: textoRegistro.replace(/^\s+/gm, ''), // Remove espaços em branco no início das linhas
-        data: dataFormatada, // Inclui a data formatada
+        data: dataAtual, // A data é inserida automaticamente
         usuario_id: usuarioId
       };
       
@@ -278,10 +265,8 @@ const Registros = () => {
       // Limpar formulário
       setFormData({
         titulo: '',
-        data: '',
         descricao: '',
         observacoes: '',
-        humor: '',
         alimentacao: '',
         sono: '',
         comportamento: '',
@@ -374,11 +359,9 @@ const Registros = () => {
     
     setRegistroEditando(registro);
     setFormData({
-      data: dataFormatada,
       titulo: camposExtraidos.titulo || registro.titulo || '',
       descricao: camposExtraidos.descricao || registro.descricao || '',
       observacoes: camposExtraidos.observacoes || registro.observacoes || '',
-      humor: registro.humor || 'neutro',
       alimentacao: camposExtraidos.alimentacao || registro.alimentacao || '',
       sono: camposExtraidos.sono || registro.sono || '',
       comportamento: camposExtraidos.comportamento || registro.comportamento || '',
@@ -386,11 +369,9 @@ const Registros = () => {
     });
     
     console.log('Formulário preenchido:', {
-      data: dataFormatada,
       titulo: camposExtraidos.titulo || registro.titulo || '',
       descricao: camposExtraidos.descricao || registro.descricao || '',
       observacoes: camposExtraidos.observacoes || registro.observacoes || '',
-      humor: registro.humor || 'neutro',
       alimentacao: camposExtraidos.alimentacao || registro.alimentacao || '',
       sono: camposExtraidos.sono || registro.sono || '',
       comportamento: camposExtraidos.comportamento || registro.comportamento || '',
@@ -510,17 +491,6 @@ const Registros = () => {
           
           <div className="form-grid">
             <div className="form-group">
-              <label>Data</label>
-              <input
-                type="date"
-                name="data"
-                value={formData.data}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            
-            <div className="form-group">
               <label>Título</label>
               <input
                 type="text"
@@ -529,17 +499,6 @@ const Registros = () => {
                 onChange={handleInputChange}
                 placeholder="Título do registro"
                 required
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Humor</label>
-              <input
-                type="text"
-                name="humor"
-                value={formData.humor}
-                onChange={handleInputChange}
-                placeholder="Como está o humor?"
               />
             </div>
             
@@ -619,11 +578,9 @@ const Registros = () => {
                 onClick={() => {
                   setRegistroEditando(null);
                   setFormData({
-                    data: format(new Date(), 'yyyy-MM-dd'),
                     titulo: '',
                     descricao: '',
                     observacoes: '',
-                    humor: '',
                     alimentacao: '',
                     sono: '',
                     comportamento: '',

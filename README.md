@@ -1,4 +1,4 @@
-#TEAJUDA
+# TEAJUDA
 
 O que é a TEAjuda?
 
